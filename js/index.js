@@ -1,40 +1,60 @@
+var hash = location.hash.replace(/^#/, '');
 var resource_path = 'https://raw.githubusercontent.com/nan0521/WDS-Stories-Resource/main';
+var masterlist;
+var currType = '';
 
 async function generatePage(){
-    const masterlist = await fetch(`${resource_path}/GameStoryMasterlist.json`).then((res) => res.json());
+    masterlist = await fetch(`${resource_path}/GameStoryMasterlist.json`).then((res) => res.json());
     let date = document.getElementById('latest');
-    date.innerText = `Latest Update: ${masterlist['LatestDate']}`;
+    date.innerText = `Latest update: ${masterlist['LatestDate'].split(' ')[0]}`;
 
-    let divlist = document.getElementById('stories');
-    let inner = '';
-
-    //Main Story
-    masterlist.StoryMaster.Main.forEach((main)=>{
-        main.Episode.forEach((ep)=>{
-            inner += `<a href="./viewer.html?id=${ep.EpisodeId}">${ep.EpisodeId}_${ep.Title ? ep.Title : ep.EpisodeId}</a><br>`;
-        })
-    })
-
-    //Event
-    masterlist.StoryMaster.Event.forEach((event)=>{
-        event.Episode.forEach((ep)=>{
-            inner += `<a href="./viewer.html?id=${ep.EpisodeId}">${ep.EpisodeId}_${ep.Title ? ep.Title : ep.EpisodeId}</a><br>`;
-        })
-    })
-
-    //Side
-    masterlist.StoryMaster.Side.forEach((side)=>{
-        side.Episode.forEach((ep)=>{
-            inner += `<a href="./viewer.html?id=${ep.EpisodeId}">${ep.EpisodeId}_${ep.Title ? ep.Title : ep.EpisodeId}</a><br>`;
-        })
-    })
-
-    //Spot
-    masterlist.StoryMaster.Spot.forEach((ep)=>{
-        inner += `<a href="./viewer.html?id=${ep.EpisodeId}">${ep.EpisodeId}_${ep.Title ? ep.Title : ep.EpisodeId}</a><br>`;
-    })
-
-    divlist.innerHTML = inner;
+    hash?hash:hash='Main';
+    selectType(hash);
 }
 
-generatePage()
+function selectType(Type){
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+
+    const btntab = document.getElementsByClassName("option-btn");
+    Array.from(btntab).forEach(element => {
+        if(element.id == `${Type}div`){
+            element.classList.add('btn-selecting');
+        }
+        else{
+            element.classList.remove('btn-selecting'); 
+        }
+    });
+
+    loadStories(Type);
+}
+
+function loadStories(Type){
+    console.log(masterlist.StoryMaster[Type])
+
+    let listview = document.getElementById('listview')
+    let inner = ``
+
+    if(Type == 'Spot'){
+        masterlist.StoryMaster[Type].forEach((ep) => {
+            let html = ``
+            html += `<div class="storyBlock">`
+            html += `<a href="./viewer.html?id=${ep.EpisodeId}">${ep.EpisodeId}_${ep.Title ? ep.Title : ep.EpisodeId}</a>`
+            html +=  `</div>`
+            inner += html
+        })
+    }else{
+        masterlist.StoryMaster[Type].forEach((group) => {
+            let html = ``
+            html += `<div class="storyBlock">`
+            group.Episode.forEach(ep => html += `<a href="./viewer.html?id=${ep.EpisodeId}">${ep.Title ? ep.Title : ep.EpisodeId}</a>`)
+            html +=  `</div>`
+            inner += html
+        })
+    }
+
+    listview.innerHTML = inner;
+
+}
+
+generatePage();

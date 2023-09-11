@@ -6,6 +6,8 @@
 
 * {
     font-family: RoNOWStd-GBs;
+    letter-spacing: 1px;
+    line-height: 20px;
 }
 
 body {
@@ -26,13 +28,116 @@ img {
     height: 100%;
 }
 
-#header {
+.header {
     position: relative;
+    top: 0;
     text-align: center;
     background: #fff;
     border-bottom: 1px solid #e6e6e6;
-    height: 60px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    /* height: 60px; */
 }
+
+.header-center {
+    grid-column: 2 / 3;
+}
+
+.header-right {
+    grid-column: 3 / 4;
+}
+
+/* index */
+
+.option-btn-list {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+}
+
+.btn-selecting {
+    border-bottom: 3px solid #00a1d6 !important;
+    color: #00a1d6 !important;
+}
+
+.option-btn {
+    padding: 15px 0;
+    color: #6d757a;
+    cursor: pointer;
+    font-size: 1.1vw;
+}
+
+.option-btn > a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+#latest {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 10px;
+    font-size: 0.7vw;
+}
+
+.content {
+    width: 65%;
+    padding: 3vh 2vh;
+    margin: 0 auto;
+}
+
+.filter {
+    /* height: 13vh; */
+    /* display: flex; */
+    /* flex-wrap: nowrap; */
+    /* flex-direction: row; */
+    /* gap: 2px; */
+    display: grid;
+    align-items: center;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(4, 17%);
+    padding: 15px 15px;
+    margin-bottom: 16px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #e6e6e6;
+}
+
+.listview {
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    grid-gap: 20px;
+    padding: 25px 50px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #e6e6e6;
+    /* height: 100vh; */
+}
+
+.storyBlock {
+    font-size: 1.2vw;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    border-radius: 10px;
+    border: 1px solid #e6e6e6;
+}
+
+.storyBlock > a {
+    text-decoration: none;
+}
+
+
 
 /* viewer */
 #reader-container {
@@ -150,7 +255,14 @@ main {
     border-color : transparent #dd6864 transparent transparent ;
 }
 
+
+
 @media only screen and (max-width: 1024px) {
+
+    
+
+
+    /* viewer */
 
     aside {
         width: 96vw;

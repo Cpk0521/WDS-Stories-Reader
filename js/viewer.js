@@ -22,7 +22,7 @@ function printStoryLog(episode){
             inner += `<div class="item-meg">${unit.Phrase.replace('/n', '\n')}</div>`;
             inner += `</div>`;
         }
-
+        
     });
 
     logList.innerHTML = inner;
