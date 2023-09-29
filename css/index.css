@@ -90,6 +90,10 @@ img {
     margin: 0 auto;
 }
 
+.hidden {
+    display: none!important;
+}
+
 .filter {
     /* height: 13vh; */
     /* display: flex; */

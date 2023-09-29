@@ -43,7 +43,17 @@ function loadStories(Type){
             html +=  `</div>`
             inner += html
         })
-    }else{
+    }else if(Type == 'Side'){
+        masterlist.StoryMaster[Type].forEach((group) => {
+            let html = ``
+            html += `<div class="storyBlock">`
+            // group.Episode.forEach(ep => html += `<a href="./viewer.html?id=${ep.EpisodeId}">${ep.Title ? ep.Title : ep.EpisodeId}</a>`)
+            group.Groups.forEach(EPgroup => EPgroup.Episode.forEach(ep => html += `<a href="./viewer.html?id=${ep.EpisodeId}">${EPgroup.Title ? EPgroup.Title : ep.EpisodeId}</a>`))
+            html +=  `</div>`
+            inner += html
+        })
+    }
+    else{
         masterlist.StoryMaster[Type].forEach((group) => {
             let html = ``
             html += `<div class="storyBlock">`
