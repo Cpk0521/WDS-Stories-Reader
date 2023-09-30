@@ -9,6 +9,7 @@ async function generatePage(){
     date.innerText = `Latest update: ${masterlist['LatestDate'].split(' ')[0]}`;
 
     hash?hash:hash='Main';
+    loadAllStories();
     selectType(hash);
 }
 
@@ -26,45 +27,84 @@ function selectType(Type){
         }
     });
 
-    loadStories(Type);
+    const listviewtab = document.getElementsByClassName("listview");
+    Array.from(listviewtab).forEach(element => {
+        if(element.id == `${Type}List`){
+            element.classList.remove('hidden');
+        }
+        else{
+            element.classList.add('hidden'); 
+        }
+    });
 }
 
-function loadStories(Type){
-    console.log(masterlist.StoryMaster[Type])
+function loadAllStories(){
 
-    let listview = document.getElementById('listview')
-    let inner = ``
+    //Main Type
+    let mainlist = document.getElementById('MainList');
+    let mainlistinner = ``
+    masterlist.StoryMaster['Main'].forEach((group) => {
+        let html = ``;
+        html += `<div class="storyBlock">`;
+        html += `<div class="storyIcon"><img src="./assets/logo/logo_${group.CompanyId}.png"><span>${group.CompanyId == 999 ? '序章' : `第 ${group.ChapterOrder} 章`}</span></div>`;
+        html += `<div class="storyChapter">`;
+        group.Episode.forEach(ep => html += `<a href="./viewer.html?id=${ep.EpisodeId}">${ep.Title ? ep.Title : ep.EpisodeId}</a>`);
+        html +=  `</div></div>`;
+        mainlistinner += html;
+    })
+    mainlist.innerHTML = mainlistinner;
 
-    if(Type == 'Spot'){
-        masterlist.StoryMaster[Type].forEach((ep) => {
-            let html = ``
-            html += `<div class="storyBlock">`
-            html += `<a href="./viewer.html?id=${ep.EpisodeId}">${ep.EpisodeId}_${ep.Title ? ep.Title : ep.EpisodeId}</a>`
-            html +=  `</div>`
-            inner += html
+    //Event Type
+    let eventlist = document.getElementById('EventList');
+    let eventlistinner = ``
+    masterlist.StoryMaster['Event'].forEach((group) => {
+        let html = ``;
+        html += `<div class="storyBlock">`;
+        html += `<div class="storyIcon"><img src="https://raw.githubusercontent.com/nan0521/WDS-Stories-Resource/main/image/eventLogo/logo_${group.Id}.png"><span>${group.Title}</span></div>`;
+        html += `<div class="storyChapter">`;
+        group.Episode.forEach(ep => html += `<a href="./viewer.html?id=${ep.EpisodeId}">${ep.Title ? ep.Title : ep.EpisodeId}</a>`);
+        html +=  `</div></div>`;
+        eventlistinner += html;
+    })
+    eventlist.innerHTML = eventlistinner;
+
+    //Side Type
+    let sidelist = document.getElementById('SideList');
+    let sidelistinner = ``
+    masterlist.StoryMaster['Side'].forEach((group) => {
+        let html = ``
+        html += `<div class="characterBlock">`;
+        html += `<div class="side-header"><img src="./assets/cuteIcon/${group.Id}.png"><span>${group.Name}</span></div>`;
+        html += `<div class="side-groups">`
+        group.Groups.forEach((EPgroup)=>{
+            html += `<div class="storyBlock side-storyBlock">`
+            html += `<div class="storyIcon"><img src="https://raw.githubusercontent.com/nan0521/WDS-Stories-Resource/main/image/cardIcon/${EPgroup.Id}_0.png"></div>`
+            html += `<div class="storyChapter">`
+            EPgroup.Episode.forEach(ep => {
+                html += `<a href="./viewer.html?id=${ep.EpisodeId}">${EPgroup.Title}${ep.Order == 1? '(前編)' : '(後編)'}</a>`
+            })
+            html += `</div></div>`
         })
-    }else if(Type == 'Side'){
-        masterlist.StoryMaster[Type].forEach((group) => {
-            let html = ``
-            html += `<div class="storyBlock">`
-            // group.Episode.forEach(ep => html += `<a href="./viewer.html?id=${ep.EpisodeId}">${ep.Title ? ep.Title : ep.EpisodeId}</a>`)
-            group.Groups.forEach(EPgroup => EPgroup.Episode.forEach(ep => html += `<a href="./viewer.html?id=${ep.EpisodeId}">${EPgroup.Title ? EPgroup.Title : ep.EpisodeId}</a>`))
-            html +=  `</div>`
-            inner += html
-        })
-    }
-    else{
-        masterlist.StoryMaster[Type].forEach((group) => {
-            let html = ``
-            html += `<div class="storyBlock">`
-            group.Episode.forEach(ep => html += `<a href="./viewer.html?id=${ep.EpisodeId}">${ep.Title ? ep.Title : ep.EpisodeId}</a>`)
-            html +=  `</div>`
-            inner += html
-        })
-    }
+        html += `</div></div>`
 
-    listview.innerHTML = inner;
+        sidelistinner += html
+    });
+    sidelist.innerHTML = sidelistinner;
 
+    //Spot Type
+    let spotlist = document.getElementById('SpotList');
+    let spotlistinner = ``
+    masterlist.StoryMaster['Spot'].forEach((ep) => {
+        let html = ``
+        html += `<div class="storyBlock">`
+        html += `<div class="spotIcon">`
+        ep.CharacterIds.forEach(charid => html +=  `<img src="./assets/characterlog/${charid}.png">`)
+        html += `</div>`
+        html += `<div class="storyChapter"><a href="./viewer.html?id=${ep.EpisodeId}">スポット会話ストーリー</a></div>`
+        html +=  `</div>`
+        spotlistinner += html
+    })
+    spotlist.innerHTML = spotlistinner;
 }
 
 generatePage();
