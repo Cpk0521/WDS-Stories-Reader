@@ -167,37 +167,9 @@ function printPosterDetail(poster){
         element.innerHTML = inner;
         logList.appendChild(element);
     })
-    optioninner += `</div>`
-    options_left.innerHTML = optioninner
+    optioninner += `</div>`;
+    options_left.innerHTML = optioninner;
 
-
-    // let logList = document.getElementById('log-list');
-    // eptypes.forEach((_, index)=>{
-    //     let content = poster.EpisodeDetail.filter((content) => content.EpisodeType == index);
-    //     let element = document.createElement('div');
-    //     element.id = `posterEP-${index}`;
-    //     element.className = 'posterEPContent hidden'
-    //     let inner = '';
-    //     if(index == 5){
-    //         content.forEach(unit =>{
-    //             inner += `<div class="log-item">`;
-    //             inner += `<div class="item-icon">
-    //                         <img src="./assets/characterlog/${unit.CharacterId}.png">
-    //                     </div>`;
-    //             inner += `<span class="item-name">${charSet.find(char => char.Id == unit.CharacterId)['Name']}</span>`;
-    //             inner += `<div class="item-meg">${unit.Description.replaceAll('/n', '\n')}</div>`;
-    //             inner += `</div>`;
-    //         })
-    //     }
-    //     else{
-    //         content.forEach(unit =>{
-    //             inner += `<div class="poster-content">${unit.Description.replaceAll('/n', '\n')}</div>`;
-    //         })
-    //     }
-    //     element.innerHTML = inner;
-    //     logList.appendChild(element);
-    // })
-    
     selectPosterContent(0)
 
 }
