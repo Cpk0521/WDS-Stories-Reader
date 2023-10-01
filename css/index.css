@@ -18,6 +18,7 @@ body {
 img {
     max-height: 100%;
     max-width: 100%;
+    border-radius: 5px;
 }
 
 .bg {
@@ -119,6 +120,12 @@ img {
     border: 1px solid #e6e6e6; 
 }
 
+.posterlistview {
+    display: grid;
+    grid-template-columns: repeat(2, 1.5fr);
+    grid-gap: 8px;
+}
+
 .storyBlock {
     display: grid;
     justify-items: stretch;
@@ -191,9 +198,15 @@ img {
     padding: 8px;
 }
 
-.side-storyBlock {
+.side-storyBlock, .poster-storyBlock{
     grid-template-columns: 1.5fr 5fr;
 }
+
+.posterBlock {
+    grid-template-columns: auto;
+    align-items: center;
+}
+
 
 /* viewer */
 #reader-container {
@@ -209,7 +222,7 @@ aside {
     width: 20vw;
 }
 
-.info-container {
+.aside-container {
     width: 100%;
     margin-bottom: 10px;
 }
@@ -219,13 +232,37 @@ aside {
     top: 8px;
 }
 
-.info-block {
+.aside-block {
     position: relative;
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-color: #e6e6e6;
     border-radius: 10px;
     border: 1px solid #e6e6e6;
     margin-bottom: 10px;
-    height: 150px;
+    /* height: 150px; */
+}
+
+.poster-options {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0px;
+}
+
+.poster-options-btn {
+    background-color: transparent;
+    /* background-color: #fff; */
+    border: 1px solid #fff;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    cursor: pointer;
+    height: 45px;
+    font-size: large;
+}
+
+.poster-options-btn-selecting {
+    background-color: #dd6864;
+    border-color: #dd6864;
+    color: #fff;
 }
 
 main {
@@ -251,6 +288,18 @@ main {
 #log-list {
     display: flex;
     flex-direction: column;
+}
+
+.poster-content {
+    text-align: left;
+    font-size: large;
+    padding: 10px 0 10px 15px;
+    margin: initial;
+    white-space: pre-line;
+    letter-spacing: 1px;
+    line-height: 37px;
+    display: flex;
+    align-items: center;
 }
 
 .log-item {
@@ -329,6 +378,10 @@ main {
         width: 90%;
     }
 
+    .listview{
+        padding: 15px 20px;
+    }
+
     .storyBlock {
         grid-template-columns: auto;
         grid-template-rows: 1fr auto;
@@ -353,6 +406,11 @@ main {
 
     aside {
         width: 96vw;
+    }
+
+    .sticky {
+        position: unset;
+        /* top: 8px; */
     }
 
     main {
