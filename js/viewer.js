@@ -1,6 +1,8 @@
 var params = new URLSearchParams(window.location.search);
 var story_id = params.get('id');
 var resource_path = 'https://raw.githubusercontent.com/nan0521/WDS-Stories-Resource/main';
+const EventTypes = ['Main', 'Event', 'Side', 'Spot', 'Poster']
+
 
 // default story
 var voicePlayer = new Audio()
@@ -37,6 +39,15 @@ function printStoryLog(episode){
     });
 
     logList.innerHTML = inner;
+
+    let footer = document.getElementById('log-footer');
+    if(episode.Prev){
+      footer.innerHTML += `<a href="./viewer.html?id=${episode.Prev}" id="prevPage">前の回</a>`
+    }
+    footer.innerHTML += `<a href="./index.html#${EventTypes[episode.StoryType - 1]}" id="mainPage">戻る</a>`
+    if(episode.Next){
+      footer.innerHTML += `<a href="./viewer.html?id=${episode.Next}" id="nextPage">次の回</a>`
+    }
 }
 
 //Poster story
@@ -167,6 +178,7 @@ function printPosterDetail(poster){
         element.innerHTML = inner;
         logList.appendChild(element);
     })
+    optioninner += `<button value="999" class="poster-options-btn" onclick="location.href='./index.html#Poster'">戻る</button>`
     optioninner += `</div>`;
     options_left.innerHTML = optioninner;
 
@@ -194,7 +206,10 @@ function selectPosterContent(eptypes){
         }
     })
 
-}   
+} 
+
+//footer
+
 
 // 404 Page
 function show404(){

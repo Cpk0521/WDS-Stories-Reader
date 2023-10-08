@@ -21,6 +21,10 @@ img {
     border-radius: 5px;
 }
 
+a {
+    text-decoration: none;
+}
+
 .bg {
     z-index: -1;
     position: fixed;
@@ -72,7 +76,6 @@ img {
 .option-btn > a {
     display: block;
     width: 100%;
-    text-decoration: none;
     color: inherit;
 }
 
@@ -155,10 +158,6 @@ img {
     gap: 2vh;
 }
 
-.storyChapter > a {
-    text-decoration: none;
-}
-
 .spotIcon {
     display: grid;
     justify-items: center;
@@ -234,15 +233,14 @@ aside {
 
 .aside-block {
     position: relative;
-    /* background-color: #fff; */
-    background-color: #e6e6e6;
+    background-color: #fff;
     border-radius: 10px;
-    border: 1px solid #e6e6e6;
     margin-bottom: 10px;
-    /* height: 150px; */
 }
 
 .poster-options {
+    background-color: #e6e6e6;
+    border: 1px solid #e6e6e6;
     display: flex;
     flex-direction: column;
     padding: 20px 0px;
@@ -288,6 +286,28 @@ main {
 #log-list {
     display: flex;
     flex-direction: column;
+}
+
+#log-footer {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: large;
+    margin: 15px auto;
+}
+
+#prevPage {
+    grid-column: 1/2;
+}
+
+#mainPage {
+    grid-column: 2/3;
+}
+
+#nextPage {
+    grid-column: 3/4;
 }
 
 .poster-content {
