@@ -1,5 +1,5 @@
 var hash = location.hash.replace(/^#/, '');
-var resource_path = 'https://raw.githubusercontent.com/nan0521/WDS-Stories-Resource/main';
+var resource_path = 'https://raw.githubusercontent.com/nan0521/WDS-Adv-Resource/main';
 var masterlist;
 var currType = '';
 // target="_blank"
