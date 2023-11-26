@@ -3,7 +3,6 @@ var story_id = params.get('id');
 var resource_path = 'https://raw.githubusercontent.com/nan0521/WDS-Adv-Resource/main';
 const EventTypes = ['Main', 'Event', 'Side', 'Spot', 'Poster']
 
-
 // default story
 var voicePlayer = new Audio()
 function playVoice(VoiceFileName){
@@ -15,7 +14,7 @@ function playVoice(VoiceFileName){
     voicePlayer.play();
 }
 
-function printStoryLog(episode){
+function printStoryLog(episode, voicemanifest = []){
 
     let titlename = document.getElementById('log-title');
     titlename.innerHTML = episode.Title ? episode.Title : '？？？';
@@ -30,7 +29,9 @@ function printStoryLog(episode){
             inner += `<div class="item-icon">
                         <img src="./assets/characterlog/${unit.SpeakerIconId}.png">
                       </div>`;
-            inner += `<div class="item-voice"><img src="./assets/voice_btn.png" onclick="playVoice(${unit.VoiceFileName})"></div>`;
+            if (voicemanifest.includes(unit.VoiceFileName) || voicemanifest.length === 0){
+              inner += `<div class="item-voice"><img src="./assets/voice_btn.png" onclick="playVoice(${unit.VoiceFileName})"></div>`;
+            }
             inner += `<span class="item-name">${unit.SpeakerName ? unit.SpeakerName : ''}</span>`;
             inner += `<div class="item-meg">${unit.Phrase.replaceAll('/n', '\n')}</div>`;
             inner += `</div>`;
@@ -220,18 +221,18 @@ function show404(){
 
 // main run
 if(story_id != null){
-    fetch(`${resource_path}/episode/${story_id}.json`)
-        .then((res) => res.json())
-        .catch((error)=>{
-            show404();
-        })
-        .then((data)=>{
-            if (data.StoryType == 5){
-                printPosterDetail(data);
-            }else{
-                printStoryLog(data);
-            }
-        })
+    Promise.all([
+      fetch(`${resource_path}/episode/${story_id}.json`).then(resp => resp.json()),
+      fetch(`${resource_path}/voice/${story_id}/manifest.json`).then(resp => resp.json())
+    ])
+    .then(([data, voicedata]) => {
+      if(data.StoryType == 5){
+        printPosterDetail(data);
+      }
+      else{
+        printStoryLog(data, voicedata);
+      }
+    })
 }else{
     show404();
 }
