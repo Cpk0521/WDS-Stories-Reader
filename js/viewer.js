@@ -221,21 +221,33 @@ function show404(){
 
 // main run
 // if(story_id != null){
-//     Promise.any([
-//       fetch(`${resource_path}/episode/${story_id}.json`).then(resp => resp.json()),
-//       // fetch(`${resource_path}/voice/${story_id}/manifest.json`).then(resp => resp.json())
-//     ])
-//     .then(([data, voicedata]) => {
+//   Promise.allSettled([
+//     fetch(`${resource_path}/episode/${story_id}.json`).then(resp => resp.json()),
+//     fetch(`${resource_path}/voice/${story_id}/manifest.json`).then(resp => resp.json())
+//   ])
+//   .then(results => {
+//     const [episode, voice] = results;
+    
+//     if(episode.status === "fulfilled") {
+//       const data = episode.value;
+      
 //       if(data.StoryType == 5){
-//         printPosterDetail(data);
+//         printPosterDetail(data);  
+//       } else {
+//         if(voice.status === "fulfilled") {
+//           const voicedata = voice.value;
+//           printStoryLog(data, voicedata);
+//         } else {
+//           printStoryLog(data); 
+//         }
 //       }
-//       else{
-//         printStoryLog(data, voicedata);
-//       }
-//     })
-// }
-// else{
-//     show404();
+      
+//     } else {
+//       show404();
+//     }
+//   });
+// } else {
+//   show404();
 // }
 
 async function init(story_id){
@@ -248,6 +260,9 @@ async function init(story_id){
       let voicedata = await fetch(`${resource_path}/voice/${story_id}/manifest.json`).then(resp => resp.json());
       printStoryLog(data, voicedata);
     }
+  }
+  else{
+    show404();
   }
 }
 
