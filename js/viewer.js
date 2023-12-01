@@ -220,19 +220,35 @@ function show404(){
 }
 
 // main run
-if(story_id != null){
-    Promise.all([
-      fetch(`${resource_path}/episode/${story_id}.json`).then(resp => resp.json()),
-      fetch(`${resource_path}/voice/${story_id}/manifest.json`).then(resp => resp.json())
-    ])
-    .then(([data, voicedata]) => {
-      if(data.StoryType == 5){
-        printPosterDetail(data);
-      }
-      else{
-        printStoryLog(data, voicedata);
-      }
-    })
-}else{
-    show404();
+// if(story_id != null){
+//     Promise.any([
+//       fetch(`${resource_path}/episode/${story_id}.json`).then(resp => resp.json()),
+//       // fetch(`${resource_path}/voice/${story_id}/manifest.json`).then(resp => resp.json())
+//     ])
+//     .then(([data, voicedata]) => {
+//       if(data.StoryType == 5){
+//         printPosterDetail(data);
+//       }
+//       else{
+//         printStoryLog(data, voicedata);
+//       }
+//     })
+// }
+// else{
+//     show404();
+// }
+
+async function init(story_id){
+  if(story_id != null){
+    let data =  await fetch(`${resource_path}/episode/${story_id}.json`).then(resp => resp.json());
+    if(data.StoryType == 5){
+      printPosterDetail(data);
+    }
+    else{
+      let voicedata = await fetch(`${resource_path}/voice/${story_id}/manifest.json`).then(resp => resp.json());
+      printStoryLog(data, voicedata);
+    }
+  }
 }
+
+init(story_id);
