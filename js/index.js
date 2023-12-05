@@ -119,6 +119,21 @@ function loadAllStories(){
         posterlistinner += html;
     })
     posterlist.innerHTML = posterlistinner;
+
+    //Special Type
+    let speciallist = document.getElementById('SpecialList');
+    let speciallistinner = ``;
+    masterlist.StoryMaster['Special'].forEach((ep) => {
+        let html = ``;
+        html += `<div class="storyBlock">`;
+        html += `<div class="spotIcon">`;
+        // ep.CharacterIds.forEach(charid => html +=  `<img src="./assets/characterlog/${charid}.png">`);
+        html += `</div>`;
+        html += `<div class="storyChapter"><a href="./viewer.html?id=${ep.EpisodeId}">スペシャルストーリー</a></div>`;
+        html +=  `</div>`;
+        speciallistinner += html;
+    })
+    speciallist.innerHTML = speciallistinner;
 }
 
 generatePage();

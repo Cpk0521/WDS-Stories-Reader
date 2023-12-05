@@ -40,7 +40,7 @@ a {
     background: #fff;
     border-bottom: 1px solid #e6e6e6;
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 4.5fr 1fr;
 }
 
 .header-center {
