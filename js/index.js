@@ -129,7 +129,7 @@ function loadAllStories(){
         html += `<div class="spotIcon">`;
         // ep.CharacterIds.forEach(charid => html +=  `<img src="./assets/characterlog/${charid}.png">`);
         html += `</div>`;
-        html += `<div class="storyChapter"><a href="./viewer.html?id=${ep.EpisodeId}">スペシャルストーリー</a></div>`;
+        html += `<div class="storyChapter"><a href="./viewer.html?id=${ep.EpisodeId}">限定ストーリー</a></div>`;
         html +=  `</div>`;
         speciallistinner += html;
     })
