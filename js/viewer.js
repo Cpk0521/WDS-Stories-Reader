@@ -20,6 +20,10 @@ function printStoryLog(episode, voicemanifest = []){
     titlename.innerHTML = episode.Title ? episode.Title : '？？？';
     document.title = `${episode.Title ? episode.Title : '？？？' } | World Dai Star: Yume no Stellarium`;
 
+    let player = document.getElementById('advplayer');
+    player.classList.remove('hidden');
+    player.href = `https://cpk0521.github.io/WDS_Adv_Player/?id=${episode.EpisodeId}`;
+
     let logList = document.getElementById('log-list');
     let inner = '';
     episode.EpisodeDetail.forEach(unit => {
