@@ -23,6 +23,7 @@ img {
 
 a {
     text-decoration: none;
+    padding: 1px 0;
 }
 
 .bg {
@@ -35,20 +36,20 @@ a {
 
 .header {
     position: relative;
-    top: 0;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    color: #FFF;
+    font-size: 14px;
     text-align: center;
-    background: #fff;
-    border-bottom: 1px solid #e6e6e6;
-    display: grid;
-    grid-template-columns: 1fr 5fr 1fr;
+    width: 100%;
+    background: #ff5e8f;
+    padding: 13px 0;
+    display: flex;
 }
 
-.header-center {
-    grid-column: 2 / 3;
-}
-
-.header-right {
-    grid-column: 3 / 4;
+.logo {
+    max-width: 150px;
 }
 
 /* index */
@@ -59,6 +60,7 @@ a {
     align-items: center;
     text-align: center;
     background-color: #fff;
+    gap: 8px;
 }
 
 .btn-selecting {
@@ -70,7 +72,7 @@ a {
     padding: 15px 0;
     color: #6d757a;
     cursor: pointer;
-    font-size: 1.1vw;
+    font-size: 14px;
 }
 
 .option-btn > a {
@@ -84,7 +86,7 @@ a {
     bottom: 0;
     right: 0;
     padding-right: 10px;
-    font-size: 0.7vw;
+    font-size: 10px;
 }
 
 .content {
@@ -417,6 +419,13 @@ main {
 
 @media only screen and (max-width: 1024px) {
 
+    .option-btn-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-content: space-evenly;
+
+    }
+
     .content{
         width: 90%;
     }
@@ -428,10 +437,12 @@ main {
     .storyBlock {
         grid-template-columns: auto;
         grid-template-rows: 1fr auto;
+        align-items: start;
     }
 
     .storyChapter {
-        font-size: 2vw;
+        /* font-size: 2vw; */
+        font-size: 14px;
         display: flex;
         align-items: center;
         gap : 8px;

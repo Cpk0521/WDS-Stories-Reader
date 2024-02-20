@@ -6,7 +6,8 @@ var currType = '';
 async function generatePage(){
     masterlist = await fetch(`${resource_path}/GameStoryMasterlist.json`).then((res) => res.json());
     let date = document.getElementById('latest');
-    date.innerText = `Latest update: ${masterlist['LatestDate'].split(' ')[0]}`;
+    // date.innerText = `Latest update: ${masterlist['LatestDate'].split(' ')[0]}`;
+    date.innerText = `Latest update: ${masterlist['LatestDate']}`;
 
     hash?hash:hash='Main';
     loadAllStories();
@@ -81,7 +82,7 @@ function loadAllStories(){
             html += `<div class="storyIcon"><img src="${resource_path}/image/cardIcon/${EPgroup.Id}_0.png"></div>`;
             html += `<div class="storyChapter">`;
             EPgroup.Episode.forEach(ep => {
-                html += `<a href="./viewer.html?id=${ep.EpisodeId}">${EPgroup.Title}${ep.Order == 1? '(前編)' : '(後編)'}</a>`;
+                html += `<a href="./viewer.html?id=${ep.EpisodeId}">${EPgroup.Title}${ep.Order == 1? ' (前編)' : ' (後編)'}</a>`;
             })
             html += `</div></div>`;
         })
