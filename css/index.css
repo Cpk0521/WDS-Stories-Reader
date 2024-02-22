@@ -70,15 +70,14 @@ a {
 }
 
 .option-btn {
-    padding: 15px 0;
     color: #6d757a;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .option-btn > a {
+    padding: 15px 0px;
     display: block;
-    width: 100%;
     color: inherit;
 }
 
@@ -424,7 +423,10 @@ main {
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-content: space-evenly;
+    }
 
+    .option-btn{
+        font-size: 14px;
     }
 
     .content{
