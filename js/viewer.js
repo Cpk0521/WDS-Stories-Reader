@@ -255,19 +255,27 @@ function show404(){
 // }
 
 async function init(story_id){
-  if(story_id != null){
-    let data =  await fetch(`${resource_path}/episode/${story_id}.json`).then(resp => resp.json());
-    if(data.StoryType == 5){
-      printPosterDetail(data);
-    }
-    else{
-      let voicedata = await fetch(`${resource_path}/voice/${story_id}/manifest.json`).then(resp => resp.json());
-      printStoryLog(data, voicedata);
-    }
+
+  if(!story_id){
+    return show404();
+  }
+
+  const data = await fetch(`${resource_path}/episode/${story_id}.json`)
+    .then(resp => resp.json())
+    .catch(err => console.log(err));
+
+  if(!data){
+    return show404();
+  }
+
+  if(data.StoryType == 5){
+    printPosterDetail(data);
   }
   else{
-    show404();
+    let voicedata = await fetch(`${resource_path}/voice/${story_id}/manifest.json`).then(resp => resp.json());
+    printStoryLog(data, voicedata);
   }
+
 }
 
 init(story_id);

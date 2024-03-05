@@ -10,6 +10,7 @@ async function generatePage(){
     date.innerText = `Latest update: ${masterlist['LatestDate']}`;
 
     hash?hash:hash='Main';
+    loadComics();
     loadAllStories();
     selectType(hash);
 }
@@ -136,5 +137,24 @@ function loadAllStories(){
     })
     speciallist.innerHTML = speciallistinner;
 }
+
+
+async function loadComics(){
+    const comicslist = await fetch(`${resource_path}/Comic.json`).then((res) => res.json());
+
+    let list = document.getElementById('ComicList');
+    list.classList.add('posterlistview');
+    let listinner = ``;
+    comicslist.forEach((comic) => {
+        let html = ``;
+        html += `<div class="">`
+        html += `<div class="storyChapter"><a href="./comic.html?id=${comic.id}">${comic.title}</a></div>`;
+        html +=  `</div>`;
+        listinner += html;
+        // console.log(comic)
+    })
+    list.innerHTML = listinner;
+}
+
 
 generatePage();

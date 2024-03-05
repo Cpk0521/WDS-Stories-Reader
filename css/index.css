@@ -131,6 +131,12 @@ a {
     grid-gap: 8px;
 }
 
+.comiclistview {
+    display: grid;
+    grid-template-columns: repeat(3, 1.5fr);
+    grid-gap: 8px;
+}
+
 .storyBlock {
     display: grid;
     justify-items: stretch;
