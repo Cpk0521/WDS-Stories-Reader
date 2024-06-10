@@ -1,7 +1,7 @@
 var params = new URLSearchParams(window.location.search);
 var story_id = params.get('id');
 var resource_path = 'https://raw.githubusercontent.com/nan0521/WDS-Adv-Resource/main';
-const EventTypes = ['Main', 'Event', 'Side', 'Spot', 'Poster']
+const EventTypes = ['Main', 'Event', 'Side', 'Spot', 'Poster', 'Special']
 
 // default story
 var voicePlayer = new Audio()
