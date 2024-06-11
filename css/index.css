@@ -125,15 +125,9 @@ a {
     border: 1px solid #e6e6e6; 
 }
 
-.posterlistview {
+.girdlistview {
     display: grid;
     grid-template-columns: repeat(2, 1.5fr);
-    grid-gap: 8px;
-}
-
-.comiclistview {
-    display: grid;
-    grid-template-columns: repeat(3, 1.5fr);
     grid-gap: 8px;
 }
 
@@ -166,12 +160,24 @@ a {
     gap: 2vh;
 }
 
+.spotDetail {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.spotPlace {
+    padding: 8px 0px 0px 8px;
+    font-size: large;
+}
+
 .spotIcon {
     display: grid;
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 4.5vw;
+    /* grid-template-rows: 4.5vw; */
+    /* grid-template-rows: 3vw; */
     grid-gap: 5px;
     padding: 8px;
 }
@@ -213,7 +219,6 @@ a {
     grid-template-columns: auto;
     align-items: center;
 }
-
 
 /* viewer */
 #reader-container {
@@ -459,6 +464,10 @@ main {
 
     .side-storyBlock {
         grid-template-rows: 1fr 1fr;
+    }
+
+    .spotPlace {
+        text-align: center;
     }
 
     .spotIcon {

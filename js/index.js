@@ -94,15 +94,25 @@ function loadAllStories(){
     sidelist.innerHTML = sidelistinner;
 
     //Spot Type
+    const spotTypes = {
+        "UtagawaHighSchool" : '歌川高等学校',
+        "HigashiUenoHighSchool" : '東上野高校',
+        "Park" : '公園',
+        "Cafe" : 'カフェ',
+        "ElectricTown" : '電気街',
+        "ThemePark" : 'テーマパーク',
+    }
     let spotlist = document.getElementById('SpotList');
+    spotlist.classList.add('girdlistview');
     let spotlistinner = ``;
     masterlist.StoryMaster['Spot'].forEach((ep) => {
         let html = ``;
         html += `<div class="storyBlock">`;
+        html += `<div class="spotDetail"><span class="spotPlace">${spotTypes[ep.Spot] ?? ''}</span>`;
         html += `<div class="spotIcon">`;
         ep.CharacterIds.forEach(charid => html +=  `<img src="./assets/characterlog/${charid}.png">`);
-        html += `</div>`;
-        html += `<div class="storyChapter"><a href="./viewer.html?id=${ep.EpisodeId}">スポット会話ストーリー</a></div>`;
+        html += `</div></div>`;
+        html += `<div class="storyChapter"><a href="./viewer.html?id=${ep.EpisodeId}">${ep.Title}</a></div>`;
         html +=  `</div>`;
         spotlistinner += html;
     })
@@ -110,14 +120,14 @@ function loadAllStories(){
 
     //Poster Type
     let posterlist = document.getElementById('PosterList');
-    posterlist.classList.add('posterlistview');
+    posterlist.classList.add('girdlistview');
     let posterlistinner = ``;
     masterlist.StoryMaster['Poster'].forEach((poster) => {
         let html = ``;
         html += `<div class="storyBlock poster-storyBlock">`;
         html += `<div class="storyIcon"><img src="${resource_path}/image/posterIcon/${poster.Id}.png"></div>`;
         html += `<div class="storyChapter"><a href="./viewer.html?id=${poster.Id}">${poster.Name}</a></div>`;
-        html +=  `</div></div>`;
+        html +=  `</div>`;
         posterlistinner += html;
     })
     posterlist.innerHTML = posterlistinner;
@@ -141,7 +151,7 @@ async function loadComics(){
     const comicslist = await fetch(`${resource_path}/Comic.json`).then((res) => res.json());
 
     let list = document.getElementById('ComicList');
-    list.classList.add('posterlistview');
+    list.classList.add('girdlistview');
     let listinner = ``;
     comicslist.forEach((comic) => {
         let html = ``;
