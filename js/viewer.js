@@ -1,6 +1,7 @@
 var params = new URLSearchParams(window.location.search);
 var story_id = params.get('id');
-var resource_path = 'https://raw.githubusercontent.com/nan0521/WDS-Adv-Resource/main';
+// var resource_path = 'https://raw.githubusercontent.com/nan0521/WDS-Adv-Resource/main';
+var resource_path = 'https://raw.githubusercontent.com/wds-sirius/Adv-Resource/main'
 const EventTypes = ['Main', 'Event', 'Side', 'Spot', 'Poster', 'Special']
 
 // default story

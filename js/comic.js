@@ -1,9 +1,10 @@
 var params = new URLSearchParams(window.location.search);
 var comic_id = params.get('id');
-var resource_path = 'https://raw.githubusercontent.com/nan0521/WDS-Adv-Resource/main';
+// var resource_path = 'https://raw.githubusercontent.com/nan0521/WDS-Adv-Resource/main';
+var resource_path = 'https://raw.githubusercontent.com/wds-sirius/Adv-Resource/main'
 
 async function init(comic_id){
-    let comiclist =  await fetch(`${resource_path}/Comic.json`).then(resp => resp.json());
+    let comiclist =  await fetch(`${resource_path}/manifest/Comic.json`).then(resp => resp.json());
 
     if(!comic_id){
         return show404();

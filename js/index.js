@@ -1,10 +1,12 @@
 var hash = location.hash.replace(/^#/, '');
-var resource_path = 'https://raw.githubusercontent.com/nan0521/WDS-Adv-Resource/main';
+// var resource_path = 'https://raw.githubusercontent.com/nan0521/WDS-Adv-Resource/main';
+var resource_path = 'https://raw.githubusercontent.com/wds-sirius/Adv-Resource/main'
 var masterlist;
 var currType = '';
 // target="_blank"
 async function generatePage(){
-    masterlist = await fetch(`${resource_path}/GameStoryMasterlist.json`).then((res) => res.json());
+    // masterlist = await fetch(`${resource_path}/GameStoryMasterlist.json`).then((res) => res.json());
+    masterlist = await fetch(`${resource_path}/manifest/Episode.json`).then((res) => res.json());
     let date = document.getElementById('latest');
     // date.innerText = `Latest update: ${masterlist['LatestDate'].split(' ')[0]}`;
     date.innerText = `Latest update: ${masterlist['LatestDate']}`;
@@ -148,7 +150,7 @@ function loadAllStories(){
 }
 
 async function loadComics(){
-    const comicslist = await fetch(`${resource_path}/Comic.json`).then((res) => res.json());
+    const comicslist = await fetch(`${resource_path}/manifest/Comic.json`).then((res) => res.json());
 
     let list = document.getElementById('ComicList');
     list.classList.add('girdlistview');
