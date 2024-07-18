@@ -403,6 +403,14 @@ main {
     border-color : transparent #dd6864 transparent transparent ;
 }
 
+.tanin {
+    background-color: #565867;
+}
+
+.tanin::after {
+    border-color : transparent #565867 transparent transparent ;
+}
+
 .advBtn {
     align-items: center;
     background: #3e7bcf;

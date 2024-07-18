@@ -28,7 +28,6 @@ function printStoryLog(episode, voicemanifest = []){
     let logList = document.getElementById('log-list');
     let inner = '';
     episode.EpisodeDetail.forEach(unit => {
-        
         if(unit.Phrase !== ""){
             inner += `<div class="log-item">`;
             inner += `<div class="item-icon">
@@ -38,7 +37,7 @@ function printStoryLog(episode, voicemanifest = []){
               inner += `<div class="item-voice"><img src="./assets/voice_btn.png" onclick="playVoice(${unit.VoiceFileName})"></div>`;
             }
             inner += `<span class="item-name">${unit.SpeakerName ? unit.SpeakerName : ''}</span>`;
-            inner += `<div class="item-meg">${unit.Phrase.replaceAll('/n', '\n')}</div>`;
+            inner += `<div class="item-meg ${unit.SpeakerIconId === '1' ? 'tanin' : ''}">${unit.Phrase.replaceAll('/n', '\n')}</div>`;
             inner += `</div>`;
         }
         
