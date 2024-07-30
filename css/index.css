@@ -271,8 +271,8 @@ aside {
 }
 
 .poster-options-btn-selecting {
-    background-color: #dd6864;
-    border-color: #dd6864;
+    background-color: #ee5f5f;
+    border-color: #ee5f5f;
     color: #fff;
 }
 
@@ -381,7 +381,7 @@ main {
     text-align: left;
     color: white;
     font-size: 17px;
-    background-color: #dd6864;
+    background-color: #ee5f5f;
     border-radius: 10px;
     padding: 10px 0 10px 15px;
     margin: initial;
@@ -400,7 +400,7 @@ main {
     transform:translateY(-50%);
     border-width:10px;
     border-style:solid;
-    border-color : transparent #dd6864 transparent transparent ;
+    border-color : transparent #ee5f5f transparent transparent ;
 }
 
 .tanin {
