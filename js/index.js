@@ -140,7 +140,7 @@ function loadAllStories(){
     masterlist.StoryMaster['Special'].forEach((sp) => {
         let html = ``;
         html += `<div class="storyBlock">`;
-        html += `<div class="storyIcon"><img src=""><span>${sp.Title}</span></div>`;
+        html += `<div class="storyIcon"><span>${sp.Title}</span></div>`;
         html += `<div class="storyChapter">`;
         sp.Episode.forEach(ep => html += `<a href="./viewer.html?id=${ep.EpisodeId}">${ep.Title ? ep.Title : ep.EpisodeId}</a>`);
         html +=  `</div></div>`;

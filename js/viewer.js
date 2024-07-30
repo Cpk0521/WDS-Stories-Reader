@@ -156,32 +156,35 @@ function printPosterDetail(poster){
     let optioninner = ``;
     optioninner += `<div class="aside-block poster-options">`
     eptypes.forEach((text, index)=>{
+      
+      // get content
+      let content = poster.EpisodeDetail.filter((content) => content.EpisodeType == index);
+      if(content.length){
         optioninner += `<button value="${index}" class="poster-options-btn ${index == 0 ? 'poster-options-btn-selecting' : ''}" onclick="selectPosterContent(${index})">${text}</button>`
+      }
 
-        //content
-        let content = poster.EpisodeDetail.filter((content) => content.EpisodeType == index);
-        let element = document.createElement('div');
-        element.id = `posterEP-${index}`;
-        element.className = 'posterEPContent hidden'
-        let inner = '';
-        if(index == 5){
-            content.forEach(unit =>{
-                inner += `<div class="log-item">`;
-                inner += `<div class="item-icon">
-                            <img src="./assets/characterlog/${unit.CharacterId}.png">
-                        </div>`;
-                inner += `<span class="item-name">${charSet.find(char => char.Id == unit.CharacterId)['Name']}</span>`;
-                inner += `<div class="item-meg">${unit.Description.replaceAll('/n', '\n')}</div>`;
-                inner += `</div>`;
-            })
-        }
-        else{
-            content.forEach(unit =>{
-                inner += `<div class="poster-content">${unit.Description.replaceAll('/n', '\n')}</div>`;
-            })
-        }
-        element.innerHTML = inner;
-        logList.appendChild(element);
+      let element = document.createElement('div');
+      element.id = `posterEP-${index}`;
+      element.className = 'posterEPContent hidden'
+      let inner = '';
+      if(index == 5){
+          content.forEach(unit =>{
+              inner += `<div class="log-item">`;
+              inner += `<div class="item-icon">
+                          <img src="./assets/characterlog/${unit.CharacterId}.png">
+                      </div>`;
+              inner += `<span class="item-name">${charSet.find(char => char.Id == unit.CharacterId)['Name']}</span>`;
+              inner += `<div class="item-meg">${unit.Description.replaceAll('/n', '\n')}</div>`;
+              inner += `</div>`;
+          })
+      }
+      else{
+          content.forEach(unit =>{
+              inner += `<div class="poster-content">${unit.Description.replaceAll('/n', '\n')}</div>`;
+          })
+      }
+      element.innerHTML = inner;
+      logList.appendChild(element);
     })
     optioninner += `<button value="999" class="poster-options-btn" onclick="location.href='./index.html#Poster'">戻る</button>`
     optioninner += `</div>`;
