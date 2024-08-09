@@ -32,6 +32,7 @@ function hightLightLog(line){
   }
   else{
     minHightLight = line;
+    maxHightLight = line;
     window.location.hash = line;
   }
   lastHightLight = line;
