@@ -282,7 +282,7 @@ main {
 
 #log {
     position: relative;
-    padding: 0 15px 10px 15px;
+    padding: 0 0 10px 0;
     margin: 0 10px;
     background-color: #fff;
     border-radius: 10px;
@@ -336,16 +336,21 @@ main {
 }
 
 .log-item {
-    margin-bottom: 10px;
+    /* border: #ee5f5f 1px solid; */
+    margin-bottom: 6px;
     position: relative;
     background-color: #fff;
-    border-radius: 10px;
-    padding: 5px 10px;
+    /* border-radius: 10px; */
+    padding: 5px 25px 10px 25px;
     display: grid;
     grid-template-columns: 1fr 8fr;
     grid-template-rows: 30px 45px;
     grid-column-gap: 15px;
     grid-row-gap: 5px;
+}
+
+.log-item:hover {
+    background-color: #ebe9e9;
 }
 
 .item-icon {
@@ -396,11 +401,15 @@ main {
     position: absolute;
     content: '';
     top: 60px;
-    left: 11.5%;
+    left: 13%;
     transform:translateY(-50%);
     border-width:10px;
     border-style:solid;
     border-color : transparent #ee5f5f transparent transparent ;
+}
+
+.hightlight {
+    background-color: bisque;
 }
 
 .tanin {
@@ -511,7 +520,9 @@ main {
         grid-template-columns: auto;
         grid-template-rows: 65px 24px auto auto;
         grid-gap: 5px;
-        border: 1px solid #e6e6e6;
+        border: 1px solid #d9d9d9;
+        /* border-width: 1px 0; */
+        margin: 0!important;
     }
 
     .item-icon {

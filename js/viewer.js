@@ -1,5 +1,10 @@
 var params = new URLSearchParams(window.location.search);
 var story_id = params.get('id');
+var hightLightLine = location.hash.replace(/^#/, '').split('-');
+var lastHightLight = hightLightLine[1] ?? 0;
+var minHightLight = hightLightLine[0];
+var maxHightLight = hightLightLine[1] ?? 0;
+
 // var resource_path = 'https://raw.githubusercontent.com/nan0521/WDS-Adv-Resource/main';
 var resource_path = 'https://raw.githubusercontent.com/wds-sirius/Adv-Resource/main'
 const EventTypes = ['Main', 'Event', 'Side', 'Spot', 'Poster', 'Special']
@@ -15,6 +20,23 @@ function playVoice(VoiceFileName){
     voicePlayer.play();
 }
 
+function hightLightLog(line){
+  if(lastHightLight!= 0 && (Math.abs(line - lastHightLight) != 1)){
+    Array.from(document.getElementsByClassName(`hightlight`)).forEach((ele) => ele.classList.remove('hightlight'))
+  }
+  document.getElementById(`log-${line}`).classList.add('hightlight');
+  if(lastHightLight!= 0 && (Math.abs(line - lastHightLight) == 1)){
+    minHightLight = Math.min(line, minHightLight, lastHightLight);
+    maxHightLight = Math.max(line, maxHightLight, lastHightLight);
+    window.location.hash = `${minHightLight}-${maxHightLight}`;
+  }
+  else{
+    minHightLight = line;
+    window.location.hash = line;
+  }
+  lastHightLight = line;
+}
+
 function printStoryLog(episode, voicemanifest = []){
 
     let titlename = document.getElementById('log-title');
@@ -26,24 +48,34 @@ function printStoryLog(episode, voicemanifest = []){
     player.href = `https://cpk0521.github.io/WDS_Adv_Player/?id=${episode.EpisodeId}`;
 
     let logList = document.getElementById('log-list');
-    let inner = '';
+    let index = 1;
     episode.EpisodeDetail.forEach(unit => {
         if(unit.Phrase !== ""){
-            inner += `<div class="log-item">`;
-            inner += `<div class="item-icon">
-                        <img src="./assets/characterlog/${unit.SpeakerIconId}.png">
-                      </div>`;
-            if (voicemanifest.includes(unit.VoiceFileName) || voicemanifest.length === 0){
-              inner += `<div class="item-voice"><img src="./assets/voice_btn.png" onclick="playVoice(${unit.VoiceFileName})"></div>`;
-            }
-            inner += `<span class="item-name">${unit.SpeakerName ? unit.SpeakerName : ''}</span>`;
-            inner += `<div class="item-meg ${unit.SpeakerIconId === '1' ? 'tanin' : ''}">${unit.Phrase.replaceAll('/n', '\n')}</div>`;
-            inner += `</div>`;
+          let elediv = document.createElement('div');
+          let divid = index++;
+          elediv.className = 'log-item';
+          if(hightLightLine[1] && divid >= hightLightLine[0] && divid <= hightLightLine[1]){
+              elediv.classList.add('hightlight')
+          }else if(divid == hightLightLine[0]){
+            elediv.classList.add('hightlight')
+          }
+          elediv.id = `log-${divid}`;
+          elediv.onclick = () => hightLightLog(divid);
+          elediv.innerHTML = `
+            <div class="item-icon">
+              <img src="./assets/characterlog/${unit.SpeakerIconId}.png">
+            </div>
+          `
+          if (voicemanifest.includes(unit.VoiceFileName) || voicemanifest.length === 0){
+            elediv.innerHTML += `<div class="item-voice"><img src="./assets/voice_btn.png" onclick="playVoice(${unit.VoiceFileName})"></div>`;
+          }
+  
+          elediv.innerHTML += `<span class="item-name">${unit.SpeakerName ? unit.SpeakerName : ''}</span>`;
+          elediv.innerHTML += `<div class="item-meg ${unit.SpeakerIconId === '1' ? 'tanin' : ''}">${unit.Phrase.replaceAll('/n', '\n')}</div>`;
+  
+          logList.appendChild(elediv);
         }
-        
-    });
-
-    logList.innerHTML = inner;
+    });  
 
     let footer = document.getElementById('log-footer');
     if(episode.Prev){
@@ -225,37 +257,6 @@ function show404(){
     let titlename = document.getElementById('log-title');
     titlename.innerHTML = `404 NOT FOUND`;
 }
-
-// main run
-// if(story_id != null){
-//   Promise.allSettled([
-//     fetch(`${resource_path}/episode/${story_id}.json`).then(resp => resp.json()),
-//     fetch(`${resource_path}/voice/${story_id}/manifest.json`).then(resp => resp.json())
-//   ])
-//   .then(results => {
-//     const [episode, voice] = results;
-    
-//     if(episode.status === "fulfilled") {
-//       const data = episode.value;
-      
-//       if(data.StoryType == 5){
-//         printPosterDetail(data);  
-//       } else {
-//         if(voice.status === "fulfilled") {
-//           const voicedata = voice.value;
-//           printStoryLog(data, voicedata);
-//         } else {
-//           printStoryLog(data); 
-//         }
-//       }
-      
-//     } else {
-//       show404();
-//     }
-//   });
-// } else {
-//   show404();
-// }
 
 async function init(story_id){
 
