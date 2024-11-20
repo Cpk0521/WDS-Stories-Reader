@@ -76,22 +76,24 @@ function loadAllStories(){
     let sidelist = document.getElementById('SideList');
     let sidelistinner = ``;
     masterlist.StoryMaster['Side'].forEach((group) => {
-        let html = ``;
-        html += `<div class="characterBlock">`;
-        html += `<div class="side-header"><img src="./assets/cuteIcon/${group.Id}.png"><span>${group.Name}</span></div>`;
-        html += `<div class="side-groups">`;
-        group.Groups.forEach((EPgroup)=>{
-            html += `<div class="storyBlock side-storyBlock">`;
-            html += `<div class="storyIcon"><img src="${resource_path}/image/cardIcon/${EPgroup.Id}_0.png"></div>`;
-            html += `<div class="storyChapter">`;
-            EPgroup.Episode.forEach(ep => {
-                html += `<a href="./viewer.html?id=${ep.EpisodeId}">${EPgroup.Title}${ep.Order == 1? ' (前編)' : ' (後編)'}</a>`;
+        if (group.Groups.length > 0){
+            let html = ``;
+            html += `<div class="characterBlock">`;
+            html += `<div class="side-header"><img src="./assets/cuteIcon/${group.Id}.png"><span>${group.Name}</span></div>`;
+            html += `<div class="side-groups">`;
+            group.Groups.forEach((EPgroup)=>{
+                html += `<div class="storyBlock side-storyBlock">`;
+                html += `<div class="storyIcon"><img src="${resource_path}/image/cardIcon/${EPgroup.Id}_0.png"></div>`;
+                html += `<div class="storyChapter">`;
+                EPgroup.Episode.forEach(ep => {
+                    html += `<a href="./viewer.html?id=${ep.EpisodeId}">${EPgroup.Title}${ep.Order == 1? ' (前編)' : ' (後編)'}</a>`;
+                })
+                html += `</div></div>`;
             })
             html += `</div></div>`;
-        })
-        html += `</div></div>`;
-
-        sidelistinner += html;
+    
+            sidelistinner += html;
+        }
     });
     sidelist.innerHTML = sidelistinner;
 
