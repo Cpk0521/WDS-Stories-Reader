@@ -79,7 +79,7 @@ function loadAllStories(){
         if (group.Groups.length > 0){
             let html = ``;
             html += `<div class="characterBlock">`;
-            html += `<div class="side-header"><img src="./assets/cuteIcon/${group.Id}.png"><span>${group.Name}</span></div>`;
+            html += `<div class="side-header"><img src="./assets/characterbases/${group.Id}.png"><span>${group.Name}</span></div>`;
             html += `<div class="side-groups">`;
             group.Groups.forEach((EPgroup)=>{
                 html += `<div class="storyBlock side-storyBlock">`;
