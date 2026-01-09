@@ -85,9 +85,13 @@ function loadAllStories(){
                 html += `<div class="storyBlock side-storyBlock">`;
                 html += `<div class="storyIcon"><img src="${resource_path}/image/cardIcon/${EPgroup.Id}_0.png"></div>`;
                 html += `<div class="storyChapter">`;
-                EPgroup.Episode.forEach(ep => {
-                    html += `<a href="./viewer.html?id=${ep.EpisodeId}">${EPgroup.Title}${ep.Order == 1? ' (前編)' : ' (後編)'}</a>`;
-                })
+                if(EPgroup.Episode.length > 0){
+                    EPgroup.Episode.forEach(ep => {
+                        html += `<a href="./viewer.html?id=${ep.EpisodeId}">${EPgroup.Title}${ep.Order == 1? ' (前編)' : ' (後編)'}</a>`;
+                    })
+                }else{
+                    
+                }
                 html += `</div></div>`;
             })
             html += `</div></div>`;

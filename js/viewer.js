@@ -40,52 +40,58 @@ function hightLightLog(line){
 
 function printStoryLog(episode, voicemanifest = []){
 
-    let titlename = document.getElementById('log-title');
-    titlename.innerHTML = episode.Title ? episode.Title : '？？？';
-    document.title = `${episode.Title ? episode.Title : '？？？' } | World Dai Star: Yume no Stellarium`;
+  let chaptername = document.getElementById('log-chapter');
+  chaptername.innerHTML = ``;
+  if(episode.Chapter && episode.Chapter !== "") {
+    chaptername.innerHTML = episode.Chapter;
+  }
 
-    let player = document.getElementById('advplayer');
-    player.classList.remove('hidden');
-    player.href = `https://cpk0521.github.io/WDS_Adv_Player/?id=${episode.EpisodeId}`;
+  let titlename = document.getElementById('log-title');
+  titlename.innerHTML = episode.Title ? episode.Title : '？？？';
+  document.title = `${episode.Title ? episode.Title : '？？？' } | World Dai Star: Yume no Stellarium`;
 
-    let logList = document.getElementById('log-list');
-    let index = 1;
-    episode.EpisodeDetail.forEach(unit => {
-        if(unit.Phrase !== ""){
-          let elediv = document.createElement('div');
-          let divid = index++;
-          elediv.className = 'log-item';
-          if(hightLightLine[1] && divid >= hightLightLine[0] && divid <= hightLightLine[1]){
-              elediv.classList.add('hightlight')
-          }else if(divid == hightLightLine[0]){
+  let player = document.getElementById('advplayer');
+  player.classList.remove('hidden');
+  player.href = `https://cpk0521.github.io/WDS_Adv_Player/?id=${episode.EpisodeId}`;
+
+  let logList = document.getElementById('log-list');
+  let index = 1;
+  episode.EpisodeDetail.forEach(unit => {
+      if(unit.Phrase !== ""){
+        let elediv = document.createElement('div');
+        let divid = index++;
+        elediv.className = 'log-item';
+        if(hightLightLine[1] && divid >= hightLightLine[0] && divid <= hightLightLine[1]){
             elediv.classList.add('hightlight')
-          }
-          elediv.id = `log-${divid}`;
-          elediv.onclick = () => hightLightLog(divid);
-          elediv.innerHTML = `
-            <div class="item-icon">
-              <img src="./assets/characterlog/${unit.SpeakerIconId}.png">
-            </div>
-          `
-          if (voicemanifest.includes(unit.VoiceFileName) || voicemanifest.length === 0){
-            elediv.innerHTML += `<div class="item-voice"><img src="./assets/voice_btn.png" onclick="playVoice(${unit.VoiceFileName})"></div>`;
-          }
-  
-          elediv.innerHTML += `<span class="item-name">${unit.SpeakerName ? unit.SpeakerName : ''}</span>`;
-          elediv.innerHTML += `<div class="item-meg ${unit.SpeakerIconId === '1' ? 'tanin' : ''}">${unit.Phrase.replaceAll('/n', '\n')}</div>`;
-  
-          logList.appendChild(elediv);
+        }else if(divid == hightLightLine[0]){
+          elediv.classList.add('hightlight')
         }
-    });  
+        elediv.id = `log-${divid}`;
+        elediv.onclick = () => hightLightLog(divid);
+        elediv.innerHTML = `
+          <div class="item-icon">
+            <img src="./assets/characterlog/${unit.SpeakerIconId}.png">
+          </div>
+        `
+        if (voicemanifest.includes(unit.VoiceFileName) || voicemanifest.length === 0){
+          elediv.innerHTML += `<div class="item-voice"><img src="./assets/voice_btn.png" onclick="playVoice(${unit.VoiceFileName})"></div>`;
+        }
 
-    let footer = document.getElementById('log-footer');
-    if(episode.Prev){
-      footer.innerHTML += `<a href="./viewer.html?id=${episode.Prev}" id="prevPage">前の回</a>`
-    }
-    footer.innerHTML += `<a href="./index.html#${EventTypes[episode.StoryType - 1]}" id="mainPage">戻る</a>`
-    if(episode.Next){
-      footer.innerHTML += `<a href="./viewer.html?id=${episode.Next}" id="nextPage">次の回</a>`
-    }
+        elediv.innerHTML += `<span class="item-name">${unit.SpeakerName ? unit.SpeakerName : ''}</span>`;
+        elediv.innerHTML += `<div class="item-meg ${unit.SpeakerIconId === '1' ? 'tanin' : ''}">${unit.Phrase.replaceAll('/n', '\n')}</div>`;
+
+        logList.appendChild(elediv);
+      }
+  });  
+
+  let footer = document.getElementById('log-footer');
+  if(episode.Prev){
+    footer.innerHTML += `<a href="./viewer.html?id=${episode.Prev}" id="prevPage">前の回</a>`
+  }
+  footer.innerHTML += `<a href="./index.html#${EventTypes[episode.StoryType - 1]}" id="mainPage">戻る</a>`
+  if(episode.Next){
+    footer.innerHTML += `<a href="./viewer.html?id=${episode.Next}" id="nextPage">次の回</a>`
+  }
 }
 
 //Poster story
@@ -180,7 +186,7 @@ const eptypes = ['情報', '第一幕', '第二幕', '第三幕', '第四幕', '
 
 function printPosterDetail(poster){
     document.title = `${poster.Title ? poster.Title : '？？？' } | World Dai Star: Yume no Stellarium`;
-    let titlename = document.getElementById('log-title');
+    let titlename = document.getElementById('log-chapter');
     titlename.innerHTML = 'ポスターストーリー';
 
     //select Btn
@@ -255,7 +261,7 @@ function selectPosterContent(eptypes){
 // 404 Page
 function show404(){
     document.title = `404 | World Dai Star: Yume no Stellarium`;
-    let titlename = document.getElementById('log-title');
+    let titlename = document.getElementById('log-chapter');
     titlename.innerHTML = `404 NOT FOUND`;
 }
 

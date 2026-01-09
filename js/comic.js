@@ -16,7 +16,7 @@ async function init(comic_id){
         return show404();
     }
 
-    let titlename = document.getElementById('log-title');
+    let titlename = document.getElementById('log-chapter');
     titlename.innerHTML = data.title ?? '？？？';
     document.title = `${data.title ? data.title : '？？？' } | World Dai Star: Yume no Stellarium`;
 

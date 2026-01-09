@@ -291,6 +291,12 @@ main {
 }
 
 #log-title {
+    margin: 12px auto;
+    font-size: large;
+    font-weight: bolder;
+}
+
+#log-chapter {
     margin: 15px auto;
     font-size: x-large;
     font-weight: bolder;
@@ -431,7 +437,7 @@ main {
     font-size: 15px;
     font-weight: 700;
     height: 30px;
-    margin: 5px auto;
+    margin: 7px auto;
     width: fit-content;
     padding: 0 15px;
     justify-content: center;
@@ -550,7 +556,7 @@ main {
     .item-meg {
         grid-row: 4 / 5;
         grid-column: 1 / 2;
-        font-size: large;
+        font-size: 15px;
         line-height: 20px;
         padding: 7px 0 7px 10px;
         margin: 12px 0;
