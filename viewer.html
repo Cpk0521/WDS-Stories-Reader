@@ -1,80 +1,68 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stories Archive Reader | World Dai Star: Yume no Stellarium</title>
-    <link rel="icon" type="image/png" href="https://world-dai-star.com/MeNeEcJP/wp-content/themes/wds/assets/images/favicon/icon-192x192.png">
-    <meta
-      name="description"
-      content="Stories Archive Reader | World Dai Star: Yume no Stellarium"
-    />
 
-    <!-- X -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:url"
-      content="https://cpk0521.github.io/WDS-Stories-Reader/"
-    />
-    <meta name="twitter:title" content="Stories Archive Reader | World Dai Star: Yume no Stellarium" />
-    <meta
-      name="twitter:description"
-      content="Stories Archive Reader | World Dai Star: Yume no Stellarium"
-    />
-    <meta
-      name="twitter:image"
-      content="https://raw.githubusercontent.com/Cpk0521/WDS-Stories-Reader/main/assets/logo/logo_999.png"
-    />
-    <meta name="twitter:image:src" content="https://raw.githubusercontent.com/Cpk0521/WDS-Stories-Reader/main/assets/logo/logo_999.png">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stories Archive Reader | World Dai Star: Yume no Stellarium</title>
+  <link rel="icon" type="image/png"
+    href="https://world-dai-star.com/MeNeEcJP/wp-content/themes/wds/assets/images/favicon/icon-192x192.png">
+  <meta name="description" content="Stories Archive Reader | World Dai Star: Yume no Stellarium" />
+  <meta itemprop="description" content="Stories Archive Reader | World Dai Star: Yume no Stellarium" />
+  <meta name="keywords" itemprop="keywords"
+    content="World Dai Star, ワールドダイスター, WDS, ユメステ, ゆめのステラリウム, 夢のステラリウム, Yume no Stellarium, Stories Archive Reader, ストーリー, Stories">
 
-    <!-- facebook -->
-    <meta property="og:title" content="Stories Archive Reader | World Dai Star: Yume no Stellarium" />
-    <meta
-      property="og:site_name"
-      content="Stories Archive Reader | World Dai Star: Yume no Stellarium"
-    />
-    <meta
-      property="og:description"
-      content="Stories Archive Reader | World Dai Star: Yume no Stellarium"
-    />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://cpk0521.github.io/WDS-Stories-Reader/"
-    />
-    <meta
-      property="og:image"
-      content="https://raw.githubusercontent.com/Cpk0521/WDS-Stories-Reader/main/assets/logo/logo_999.png"
-    />
+  <!-- X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://cpk0521.github.io/WDS-Stories-Reader/" />
+  <meta name="twitter:title" content="Stories Archive Reader | World Dai Star: Yume no Stellarium" />
+  <meta name="twitter:description" content="Stories Archive Reader | World Dai Star: Yume no Stellarium" />
+  <meta name="twitter:image"
+    content="https://raw.githubusercontent.com/Cpk0521/WDS-Stories-Reader/main/assets/logo/logo_999.png" />
+  <meta name="twitter:image:src"
+    content="https://raw.githubusercontent.com/Cpk0521/WDS-Stories-Reader/main/assets/logo/logo_999.png">
 
-    <link rel="stylesheet" type="text/css" href="./css/index.css">
-  </head>
-  <body>
-      <noscript>You need to enable JavaScript to run this app.</noscript>
-      <div class="bg"></div>
-      <div id="reader-container">
-        <aside>
-          <div class="aside-container sticky" id="options">
-          </div>
-        </aside>
-        <main>
-          <div id="log">
-            <div id="log-chapter">Loading</div>
-            <div id="log-title"></div>
-            <a class="advBtn hidden" id="advplayer" target="_blank">
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-youtube" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" />
-                <path d="M10 9l5 3l-5 3z" />
-              </svg>
-            </a>
-            <div id="log-list"></div>
-            <div id="log-footer"></div>
-          </div>
-        </main>
-        <aside></aside>
+  <!-- facebook -->
+  <meta property="og:title" content="Stories Archive Reader | World Dai Star: Yume no Stellarium" />
+  <meta property="og:site_name" content="Stories Archive Reader | World Dai Star: Yume no Stellarium" />
+  <meta property="og:description" content="Stories Archive Reader | World Dai Star: Yume no Stellarium" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cpk0521.github.io/WDS-Stories-Reader/" />
+  <meta property="og:image"
+    content="https://raw.githubusercontent.com/Cpk0521/WDS-Stories-Reader/main/assets/logo/logo_999.png" />
+
+  <link rel="stylesheet" type="text/css" href="./css/index.css">
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div class="bg"></div>
+  <div id="reader-container">
+    <aside>
+      <div class="aside-container sticky" id="options">
       </div>
+    </aside>
+    <main>
+      <div id="log">
+        <div id="log-chapter">Loading</div>
+        <div id="log-title"></div>
+        <a class="advBtn hidden" id="advplayer" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-youtube" width="24"
+            height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M2 8a4 4 0 0 1 4 -4h12a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-12a4 4 0 0 1 -4 -4v-8z" />
+            <path d="M10 9l5 3l-5 3z" />
+          </svg>
+        </a>
+        <div id="log-list"></div>
+        <div id="log-footer"></div>
+      </div>
+    </main>
+    <aside></aside>
+  </div>
 
-      <script src="./js/viewer.js" type="text/javascript"></script>
-  </body>
+  <script src="./js/viewer.js" type="text/javascript"></script>
+</body>
+
 </html>
