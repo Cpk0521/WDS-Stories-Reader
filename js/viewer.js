@@ -5,7 +5,6 @@ var lastHightLight = hightLightLine[1] ?? 0;
 var minHightLight = hightLightLine[0];
 var maxHightLight = hightLightLine[1] ?? 0;
 
-// var resource_path = 'https://raw.githubusercontent.com/nan0521/WDS-Adv-Resource/main';
 var resource_path = 'https://raw.githubusercontent.com/wds-sirius/Adv-Resource/main'
 const EventTypes = ['Main', 'Event', 'Side', 'Spot', 'Poster', 'Special']
 

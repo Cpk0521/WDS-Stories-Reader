@@ -1,6 +1,5 @@
 var params = new URLSearchParams(window.location.search);
 var comic_id = params.get('id');
-// var resource_path = 'https://raw.githubusercontent.com/nan0521/WDS-Adv-Resource/main';
 var resource_path = 'https://raw.githubusercontent.com/wds-sirius/Adv-Resource/main'
 
 async function init(comic_id){
