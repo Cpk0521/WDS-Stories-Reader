@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #app {
+  height: 100%;
+  font-family: RoNOWStd-GBs, sans-serif;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body {
+    background-color: #f1f5f9;
+}
+
+/* @font-face {
+    font-family: RoNOWStd-GBs;
+    src: url(./fonts/RoNOWStd-GBs.otf);
+    font-weight: normal;
+} */
+
+[data-color=r] {
+    color: #ff5e8f
+}
+
+[data-color=b] {
+    color: #00a6f4
+}
+
+[data-color=y] {
+    color: #ffbf30
+}
+
+[data-color=o] {
+    color: #ff9630
+}
+
+[data-color=g] {
+    color: #3f3e5b
+}
+
+/* 摺疊面板展開/收合滑動漸變動畫 */
+.slide-fade-enter-active {
+    transition: all 0.3s ease-out;
+}
+.slide-fade-leave-active {
+    transition: all 0.25s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    transform: translateY(-10px);
+    opacity: 0;
+}

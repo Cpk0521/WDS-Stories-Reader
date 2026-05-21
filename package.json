@@ -1,0 +1,42 @@
+{
+  "name": "wds-stories-reader",
+  "version": "1.0.0",
+  "author": "CPK",
+  "keywords": [
+    "World-dai-star",
+    "Vue"
+  ],
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "rimraf dist && vite build",
+    "build:tsc": "rimraf dist && vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "predeploy": "npm run build:tsc",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "@phosphor-icons/vue": "^2.2.1",
+    "pinia": "^2.0.0",
+    "vite-plugin-pwa": "^0.18.0",
+    "vue": "^3.5.18",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.16.5",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/tsconfig": "^0.7.0",
+    "autoprefixer": "^10.4.0",
+    "gh-pages": "^6.1.0",
+    "postcss": "^8.4.0",
+    "rimraf": "^5.0.1",
+    "tailwindcss": "^3.4.0",
+    "terser": "^5.19.2",
+    "typescript": "~5.8.3",
+    "vite": "^7.1.0",
+    "vue-tsc": "^3.0.5"
+  }
+}
