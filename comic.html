@@ -24,35 +24,15 @@
     <meta property="og:url" content="https://cpk0521.github.io/WDS-Stories-Reader/" />
     <meta property="og:image"
         content="https://raw.githubusercontent.com/Cpk0521/WDS-Stories-Reader/main/public/assets/logo/logo_999.png" />
-    <!-- <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const id = urlParams.get('id');
-        console.log(id)
-        // if (id) {
-        //     window.location.href = `./#/c/${id}`;
-        // } else {
-        //     window.location.href = './#/Comic';
-        // }
-    </script> -->
-</head>
-
-<body>
-    <a id="newlink">
-        <p>Go To New Website</p>
-    </a>
-
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
-        console.log(id)
-        // if (id) {
-        //     window.location.href = `./#/c/${id}`;
-        // } else {
-        //     window.location.href = './#/Comic';
-        // }
-        const alink = document.getElementById('newlink')
-        alink.href = id ? `./#/c/${id}` : './#/Comic';
+        if (id) {
+            window.location.href = `./#/c/${id}`;
+        } else {
+            window.location.href = './#/Comic';
+        }
     </script>
-</body>
-
+</head>
+<body></body>
 </html>
