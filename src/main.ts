@@ -9,10 +9,10 @@ import { useMasterlistStore } from './store/masterlist';
 const pinia = createPinia();
 const app = createApp(App);
 app.use(pinia);
-
 const masterlistStore = useMasterlistStore();
 masterlistStore.loadMasterlist().then(() => {
   console.log('Masterlist loaded in App.vue');
 });
+
 
 app.use(router).mount('#app');

@@ -34,33 +34,7 @@ const router = createRouter({
     },
     {
       path: '/:pathMatch(.*)*', 
-      name: 'NotFound', 
-      redirect: (to) => {
-        const pathString = Array.isArray(to.params.pathMatch) 
-          ? to.params.pathMatch[0] 
-          : to.params.pathMatch;
-        const isValidCategory = CATEGORY_MAP.some(tab => tab.name === pathString);
-        if (isValidCategory) {
-          return { path: `/${pathString}` }; // 導向到 /#/Main
-        }
-
-        const pathname = window.location.pathname;
-        const urlParams = new URLSearchParams(window.location.search);
-        const oldId = urlParams.get('id');
-
-        if (pathname.endsWith('comic.html') && oldId) {
-          return { name: 'ComicViewer', params: { id: oldId } };
-        }
-        if (pathname.endsWith('viewer.html') && oldId) {
-          return { name: 'BaseViewer', params: { id: oldId } };
-        }
-
-        return { name: 'RealNotFound' };
-      }
-    },
-    {
-      path: '/not-found',
-      name: 'RealNotFound',
+      name: 'NotFound',
       component: () => import('../views/NotFound.vue'),
     }
   ],

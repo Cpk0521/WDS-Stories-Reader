@@ -54,6 +54,25 @@
             font-weight: normal;
           }
         </style>
+        <script>
+          const pathname = window.location.pathname;
+          const urlParams = new URLSearchParams(window.location.search);
+          const id = urlParams.get('id');
+
+          const isComic = pathname.includes('comic.html') || window.location.href.includes('comic.html');
+          const isViewer = pathname.includes('viewer.html') || window.location.href.includes('viewer.html');
+
+          if (id && (isComic || isViewer)) {
+            let basePath = '/';
+            if (pathname.includes('/WDS-Stories-Reader/')) 
+            {
+              basePath = '/WDS-Stories-Reader/';
+            }
+
+            const targetHash = isComic ? `#/c/${id}` : `#/v/${id}`;
+            window.location.href = window.location.origin + basePath + targetHash;
+          }
+        </script>
     </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
