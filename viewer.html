@@ -35,11 +35,11 @@
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
         console.log(id)
-        if (id) {
-            window.location.href = `./#/v/${id}`;
-        } else {
-            window.location.href = './#/Main';
-        }
+        // if (id) {
+        //     window.location.href = `./#/v/${id}`;
+        // } else {
+        //     window.location.href = './#/Main';
+        // }
         const alink = document.getElementById('newlink')
         alink.href = id ? `./#/v/${id}` : './#/Main';
     </script>
