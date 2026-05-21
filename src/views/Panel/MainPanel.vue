@@ -55,7 +55,7 @@ onMounted(()=>{
 
             <div class="flex flex-grow items-center justify-between px-6 py-4">
                 <div class="flex items-center gap-4">
-                    <div class="aspect-[127/33] w-64 rounded-2xl border border-gray-200/80 bg-slate-50 flex items-center justify-center text-xs font-black text-gray-400 overflow-hidden flex-none">
+                    <div class="aspect-[127/33] w-24 md:w-80 rounded-2xl border border-gray-200/80 bg-slate-50 flex items-center justify-center text-xs font-black text-gray-400 overflow-hidden flex-none">
                         <img 
                             :src="`./assets/logo/logo_${gp.CompanyId}.png`"
                             class="w-auto h-full object-cover group-hover:scale-110 transition-transform duration-700"
