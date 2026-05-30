@@ -28,13 +28,15 @@ const toggleSidebar = () => {
                         </button>
                     </div>
                     
-                    <div class="flex items-center gap-3 flex-shrink-0 cursor-pointer" >
+                    <RouterLink 
+                        :to="`/`"
+                        class="flex items-center gap-3 flex-shrink-0 cursor-pointer" >
                         <img
                             src="/assets/logo/logo_999.png"
                             alt="Logo"
                             class="h-10 flex items-center justify-center"
                         />
-                    </div>
+                    </RouterLink>
                 </div>
 
                 <!-- 右側 -->

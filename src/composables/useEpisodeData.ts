@@ -6,6 +6,7 @@ export function useEpisodeData() {
     const episodeData = ref<IEpisodeModel | null>(null)
     const voiceData = ref<string[] | null>(null)
     const error = ref<Error | null>(null);
+    const VoiceError = ref<Error | null>(null);
 
     const fetchEpisodeData = async (episodeId : number) => {
         try {
@@ -24,7 +25,7 @@ export function useEpisodeData() {
             const data = await response.json();
             voiceData.value = data;
         }catch (e) {
-            error.value = e as Error;
+            VoiceError.value = e as Error;
         }
     }
 
@@ -32,6 +33,7 @@ export function useEpisodeData() {
         episodeData,
         voiceData,
         error,
+        VoiceError,
         fetchEpisodeData,
         fetchVoiceData
     }  

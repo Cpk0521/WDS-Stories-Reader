@@ -5,11 +5,11 @@ Stories Reader for World Dai Star
 
 ```shell
 # Install dependencies
-yarn install
+pnpm install
 
 # Start development server
-yarn run dev
+pnpm run dev
 
 # Build for production
-yarn run build
+pnpm run build
 ```

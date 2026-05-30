@@ -29,12 +29,14 @@ const { sid, title, episode } = defineProps<{
             
             <div class="grid grid-cols-2 gap-2 my-2">
                 <RouterLink 
+                    v-if="episode.length > 0"
                     v-for="ep in episode"
                     :to="`/v/${ep.EpisodeId}`"
                     class="py-1.5 px-3 text-center rounded-lg text-xs font-bold text-gray-700 transition-all border flex items-center justify-center gap-1 shadow-sm bg-gray-50 hover:bg-[#ff5e8f]/10 hover:text-gray-900 border-gray-100 hover:border-[#ff5e8f]/20"
                 >
                     <span>{{ ep.Order === 1 ? '前編' : '後編'}}</span>
                 </RouterLink>
+                <p v-else class="text-sm text-gray-400 italic py-1.5">更新待ち</p>
             </div>
         </div>
     </div>

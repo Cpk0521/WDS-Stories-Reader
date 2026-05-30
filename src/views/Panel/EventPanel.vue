@@ -20,6 +20,11 @@ const sortedEvents = computed(() => {
         ? fitlered.sort((a, b) => b.Date.toString().localeCompare(a.Date.toString()))
         : fitlered.sort((a, b) => a.Date.toString().localeCompare(b.Date.toString()));
 });
+const yearOptions = computed(() => {
+  if (!fullEventData.value) return ['2023', '2024', '2025', '2026']; // default if no data
+  const latestYear = Math.max(...fullEventData.value.map(event => parseInt(event.Date.split('-')[0])));
+  return Array.from({ length: latestYear - 2022 }, (_, i) => (2023 + i).toString());
+});
 
 const isFilterPanelOpen = ref(false);
 const selectedYear = ref('All');
@@ -42,7 +47,7 @@ onMounted(()=>{
      <FilterSelection 
         v-model:isFilterPanelOpen="isFilterPanelOpen"
         v-model:selectedItem="selectedYear"
-        :items="['2023', '2024', '2025', '2026']"
+        :items="yearOptions"
     />
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">

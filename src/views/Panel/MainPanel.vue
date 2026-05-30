@@ -47,10 +47,9 @@ onMounted(()=>{
     <PanelTitle :Title="'メインストーリー'" />
     <div 
         v-for="gp in data"
-        @click="toggleUnitExpand(gp.CompanyId)"
         class="flex flex-col gap-4 scroll-mt-28"
     >
-        <div class="bg-white rounded-xl border border-gray-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03),0_2px_8px_-1px_rgba(0,0,0,0.02)] flex items-stretch overflow-hidden relative min-h-[76px] group">
+        <div @click="toggleUnitExpand(gp.CompanyId)" class="bg-white rounded-xl border border-gray-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.03),0_2px_8px_-1px_rgba(0,0,0,0.02)] flex items-stretch overflow-hidden relative min-h-[76px] group">
             <div class="bg-[#ff5e8f] w-3 flex-none"></div>
 
             <div class="flex flex-grow items-center justify-between px-6 py-4">

@@ -39,12 +39,14 @@ const { eid, title, date, episode, hiddenImg } = defineProps<{
 
         <div class="w-full mt-2 grid grid-cols-1 gap-1.5 justify-between">
             <EpisodeCard 
+                v-if="episode.length > 0"
                 v-for="ep in episode" 
                 :key="ep.EpisodeId" 
                 :Id="ep.EpisodeId"
                 :Title="ep.Title"
                 :Order="ep.Order"
             />
+            <p v-else class="text-sm text-gray-500 italic text-center py-4">更新待ち</p>
         </div>
     </div>
 </template> 
