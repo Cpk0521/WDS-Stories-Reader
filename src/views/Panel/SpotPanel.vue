@@ -20,7 +20,7 @@ const isFilterPanelOpen = ref(false);
 const selectedSpot = ref('All');
 
 onMounted(()=>{
-    document.title = `Stories Archive Reader | World Dai Star: Yume no Stellarium`
+    document.title = `スポットストーリー | World Dai Star: Yume no Stellarium`
 })
 
 </script>

@@ -31,7 +31,7 @@ const selectedYear = ref('All');
 const sortOrder = ref('asc');
 
 onMounted(()=>{
-    document.title = `Stories Archive Reader | World Dai Star: Yume no Stellarium`
+    document.title = `イベントストーリー | World Dai Star: Yume no Stellarium`
 })
 
 </script>

@@ -8,7 +8,7 @@ const masterlistStore = useMasterlistStore();
 const data = computed(() => masterlistStore.special || null);
 
 onMounted(()=>{
-    document.title = `Stories Archive Reader | World Dai Star: Yume no Stellarium`
+    document.title = `限定ストーリー | World Dai Star: Yume no Stellarium`
 })
 
 </script>

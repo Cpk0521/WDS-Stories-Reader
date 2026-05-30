@@ -9,7 +9,7 @@ const fullPosterData = computed(() => masterlistStore.poster || null);
 const comicsCount = computed(() => fullPosterData.value?.length ?? 'N/A');
 
 onMounted(()=>{
-    document.title = `Stories Archive Reader | World Dai Star: Yume no Stellarium`
+    document.title = `ポスターストーリー | World Dai Star: Yume no Stellarium`
 })
 
 </script>

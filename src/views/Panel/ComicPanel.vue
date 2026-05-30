@@ -18,7 +18,7 @@ const sortedComics = computed(() => {
 })
 
 onMounted(()=>{
-    document.title = `Stories Archive Reader | World Dai Star: Yume no Stellarium`
+    document.title = `コミック | World Dai Star: Yume no Stellarium`
 })
 
 </script>

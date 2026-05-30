@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import { PhCaretDown } from "@phosphor-icons/vue";
 import { useMasterlistStore } from '../../store/masterlist';
 import PanelTitle from "../../components/PanelTitle.vue";
@@ -19,6 +19,9 @@ const toggleStories = (id:number) => {
     expandedChars.value[id.toString()] = !expandedChars.value[id.toString()];
 };
 
+onMounted(()=>{
+    document.title = `サイドストーリー | World Dai Star: Yume no Stellarium`
+})
 </script>
 
 <template>
