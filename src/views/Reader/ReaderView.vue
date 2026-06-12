@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed, watch} from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { PhX, PhPlay } from "@phosphor-icons/vue";
+import { PhX, PhPlay, PhArrowSquareOut } from "@phosphor-icons/vue";
 import { useEpisodeData } from '../../composables/useEpisodeData'
 import type { IEpisodeModel } from '../../types/episode'
 import Dialogue from '../../components/Dialogue.vue'
@@ -74,7 +74,7 @@ const toggleVideo = () => {
                 <p class="text-sm md:text-base font-bold text-gray-500 mt-2">{{ epdata?.Title }}</p>
             </div>
 
-            <div class="z-10">
+            <div class="z-10 flex-row flex items-center gap-4">
                 <button 
                     @click="toggleVideo" 
                     class="w-14 h-10 rounded-xl bg-blue-500 hover:bg-blue-600 active:scale-95 transition-all text-white flex items-center justify-center shadow hover:shadow-lg"
@@ -82,15 +82,23 @@ const toggleVideo = () => {
                     <PhPlay v-if="!isVideoOpen" :size="22" class="text-white"/>
                     <PhX v-else :size="22" class="text-white"/>
                 </button>
+                <a 
+                    v-if="isVideoOpen"
+                    @click="toggleVideo" 
+                    :href="`https://cpk0521.github.io/WDS_Adv_Player/?id=${episodeId}`"
+                    target="_blank"
+                    class="w-14 h-10 rounded-xl bg-green-400 hover:bg-green-300 active:scale-95 transition-all text-white flex items-center justify-center shadow hover:shadow-lg"
+                >
+                    <PhArrowSquareOut :size="22" class="text-white"/>
+                </a>
             </div>
 
             <transition name="slide-fade">
-                <div v-if="isVideoOpen" class="w-full overflow-hidden mb-4 rounded-xl">
+                <div v-if="isVideoOpen" class="w-full overflow-hidden mb-4">
                     <div class="aspect-[16/9] w-full ">
                         <iframe 
-                            class="w-full h-full bg-gray-300"
+                            class="w-full h-full bg-gray-100"
                             :src="`https://cpk0521.github.io/WDS_Adv_Player/?id=${episodeId}`" 
-                            frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             allowfullscreen
                         ></iframe>
