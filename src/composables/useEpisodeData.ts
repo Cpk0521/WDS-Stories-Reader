@@ -11,6 +11,9 @@ export function useEpisodeData() {
     const fetchEpisodeData = async (episodeId : number) => {
         try {
             const response = await fetch(getEpisodeDataUrl(episodeId));
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
             const data = await response.json();
             episodeData.value = data as IEpisodeModel;
             return episodeData.value
@@ -22,6 +25,9 @@ export function useEpisodeData() {
     const fetchVoiceData = async(episodeId : number) => {
         try {
             const response = await fetch(getEpisodeVoiceDataUrl(episodeId));
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
             const data = await response.json();
             voiceData.value = data;
         }catch (e) {

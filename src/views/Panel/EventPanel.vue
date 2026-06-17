@@ -12,13 +12,13 @@ const fullEventData = computed(() => masterlistStore.event || null);
 const eventCount = computed(() => fullEventData.value?.length ?? 'N/A');
 const sortedEvents = computed(() => {
     const data = [...fullEventData.value];
-    const fitlered = data.filter(event => {
+    const filtered = data.filter(event => {
         const matchesYear = selectedYear.value === 'All' || event.Date.toString().startsWith(selectedYear.value);
         return matchesYear;
     });
     return sortOrder.value === 'desc'
-        ? fitlered.sort((a, b) => b.Date.toString().localeCompare(a.Date.toString()))
-        : fitlered.sort((a, b) => a.Date.toString().localeCompare(b.Date.toString()));
+        ? filtered.sort((a, b) => b.Date.toString().localeCompare(a.Date.toString()))
+        : filtered.sort((a, b) => a.Date.toString().localeCompare(b.Date.toString()));
 });
 const yearOptions = computed(() => {
   if (!fullEventData.value) return ['2023', '2024', '2025', '2026']; // default if no data

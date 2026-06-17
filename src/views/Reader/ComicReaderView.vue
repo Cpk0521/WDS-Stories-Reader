@@ -55,7 +55,7 @@ const onSelectEpisode = () => {
 <template>
     <div class="w-full bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden pb-8">
         <h1 class="text-2xl font-bold text-center p-3">{{ comicdata?.title }}</h1>
-        <img :src="getComicDataUrl(comicdata?.filename)" alt="{{ comicdata?.title }}" class="w-full xl:max-w-xl mx-auto object-contain" v-if="comicdata?.filename"/>
+        <img :src="getComicDataUrl(comicdata?.filename)" :alt="comicdata?.title" class="w-full xl:max-w-xl mx-auto object-contain" v-if="comicdata?.filename"/>
         
         <div class="flex items-center justify-between w-full mt-6 pt-4 px-4 border-t border-gray-100 gap-3">
             <RouterLink 

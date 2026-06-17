@@ -1,10 +1,12 @@
 import { onUnmounted } from 'vue'
 import { getVoiceUrl } from '../config';
 
-const voicePlayer = new Audio();
+let voicePlayer: HTMLAudioElement | null = null;
 
 export function useVoicePlayer() {
     const playVoice = (storyId: number, voiceFileName: string) => {
+        voicePlayer = voicePlayer || new Audio();
+        
         if (!voicePlayer.paused) {
             voicePlayer.pause()
             voicePlayer.currentTime = 0
@@ -15,7 +17,9 @@ export function useVoicePlayer() {
     }
 
     const stopVoice = () => {
-        voicePlayer.pause()
+        if (voicePlayer) {
+            voicePlayer.pause()
+        }
     }
 
     onUnmounted(() => {
