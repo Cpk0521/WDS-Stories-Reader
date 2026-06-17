@@ -29,7 +29,7 @@ export interface IMainStoryData {
 export interface IEventStoryData {
     Id : number,
     Title : string,
-    Date : string, //YYYY=MM-DD
+    Date : string, //YYYY-MM-DD
     Episode : IEpisodeData[],
 }
 

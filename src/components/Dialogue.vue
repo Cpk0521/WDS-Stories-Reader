@@ -41,7 +41,7 @@ const { playVoice } = useVoicePlayer();
                         <path d="M10,2 C8,4 2,7 0,8 C2,9 8,12 10,14 Z" />
                     </svg>
                 </div>
-                <div class="px-3 py-1.5 md:px-5 rounded-[15px] text-║ md:text-lg text-white text-left leading-relaxed tracking-tight whitespace-pre-line"
+                <div class="px-3 py-1.5 md:px-5 rounded-[15px] text-sm md:text-lg text-white text-left leading-relaxed tracking-tight whitespace-pre-line"
                     :class="(unit.SpeakerIconId ?? unit.CharacterId) === '1' ? 'bg-[#565867]' : 'bg-[#ee5f5f]'" >
                     {{ (unit.Phrase ?? unit.Description).replace(/\/n/g, '\n') || ''}}
                 </div>

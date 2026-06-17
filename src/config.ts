@@ -16,7 +16,7 @@ export function getComicDataUrl(filename : string) {
 }
 
 export function getposterIconUrl(posterId : number) {
-    return `${EPISODE_DATA_URL}/image/posterIcon//${posterId}.png`
+    return `${EPISODE_DATA_URL}/image/posterIcon/${posterId}.png`
 }
 
 export function geteventLogoUrl(eventId : number) {
