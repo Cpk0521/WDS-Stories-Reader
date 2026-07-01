@@ -14,6 +14,8 @@ const toggleSidebar = () => {
     isSidebarOpen.value = !isSidebarOpen.value;
 };
 
+// const searchQuery = ref('');
+
 </script>
 
 <template>
@@ -39,8 +41,30 @@ const toggleSidebar = () => {
                     </RouterLink>
                 </div>
 
+                
                 <!-- 右側 -->
                 <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+
+                    <!-- 搜尋欄 -->
+                    <!-- <div class="hidden lg:flex flex-1 max-w-md relative group">
+                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-[#00a3e0] transition-colors duration-200">
+                            <PhMagnifyingGlass  class="text-lg"></PhMagnifyingGlass >
+                        </div>
+                        <input 
+                            v-model="searchQuery"
+                            type="text" 
+                            placeholder="検索キーワード..." 
+                            class="w-full pl-10 pr-10 py-2.5 bg-[#f0f4f8] focus:bg-white text-sm rounded-full border border-transparent focus:border-[#00a3e0] outline-none transition-all duration-300 placeholder-gray-400 text-gray-700 shadow-inner focus:shadow-md"
+                        />
+                        <button 
+                            v-if="searchQuery" 
+                            @click="searchQuery = ''"
+                            class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-400 hover:text-gray-600 transition-colors"
+                        >
+                            <PhXCircle class="text-lg" />
+                        </button>
+                    </div> -->
+
                     <div class="hidden md:flex items-center gap-1.5 text-xs font-medium text-slate-500 bg-slate-50 px-3 py-1.5 rounded-full border border-slate-200">
                         <PhClock class="text-sm text-primary" />
                         <span>Latest update: {{ updatedDate }}</span>
@@ -85,10 +109,32 @@ const toggleSidebar = () => {
                     <PhX class="w-6 h-6" />
                 </button>
             </div>
+            
             <div class="flex items-center gap-1.5 text-xs font-medium text-slate-500 bg-slate-50 mx-6 px-3 py-1.5 rounded-full border border-slate-200 md:hidden">
                 <PhClock class="text-sm text-primary" />
                 <span>Latest update: {{ updatedDate }}</span>
             </div>
+
+            <!-- 搜尋欄 -->
+            <!-- <div class="flex-1 mx-6 py-2 max-w-md relative group">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400 group-focus-within:text-[#00a3e0] transition-colors duration-200">
+                    <PhMagnifyingGlass  class="text-lg"></PhMagnifyingGlass >
+                </div>
+                <input 
+                    v-model="searchQuery"
+                    type="text" 
+                    placeholder="検索キーワード..." 
+                    class="w-full pl-10 pr-10 py-2.5 bg-[#f0f4f8] focus:bg-white text-sm rounded-full border border-transparent focus:border-[#00a3e0] outline-none transition-all duration-300 placeholder-gray-400 text-gray-700 shadow-inner focus:shadow-md"
+                />
+                <button 
+                    v-if="searchQuery" 
+                    @click="searchQuery = ''"
+                    class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                    <PhXCircle class="text-lg" />
+                </button>
+            </div> -->
+
             <ul class="py-2 text-center ">
                 <li v-for="tab in CATEGORY_MAP" :key="tab.name">
                     <RouterLink 

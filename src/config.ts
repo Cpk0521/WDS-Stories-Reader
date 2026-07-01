@@ -7,8 +7,8 @@ export function getEpisodeDataUrl(episodeId : number) {
     return `${EPISODE_DATA_URL}/episode/${episodeId}.json`
 }
 
-export function getEpisodeVoiceDataUrl(episodeId : number){
-    return `${EPISODE_DATA_URL}/voice/${episodeId}/manifest.json`
+export function getEpisodeVoicePackUrl(episodeId : number = 110011){
+    return `${EPISODE_DATA_URL}/voice/${episodeId}.wds`
 }
 
 export function getComicDataUrl(filename : string) {
@@ -25,8 +25,4 @@ export function geteventLogoUrl(eventId : number) {
 
 export function getCardIconUrl(cardId : number){
     return `${EPISODE_DATA_URL}/image/cardIcon/${cardId}_0.png`
-}
-
-export function getVoiceUrl(story_id : number, VoiceFileName:string){
-    return `${EPISODE_DATA_URL}/voice/${story_id}/${VoiceFileName}.mp3`
 }

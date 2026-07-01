@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import type { IEpisodeUnit, IPosterUnit } from '../types/episode';
-import { useVoicePlayer } from '../composables/useVoicePlayer'
 import { getNameById } from '../types/characterSet'
 
 const {unit, isVoice} = defineProps<{
     unit : IEpisodeUnit & IPosterUnit,
-    isVoice : boolean
+    isVoice : boolean,
+    voiceClick? : (CUEName : string) => void,
 }>();
-
-const { playVoice } = useVoicePlayer();
 
 </script>
 
@@ -23,7 +21,7 @@ const { playVoice } = useVoicePlayer();
                 
                 <button 
                     v-show="isVoice"
-                    @click="isVoice ? playVoice(unit.EpisodeMasterId, unit.VoiceFileName!) : ''"
+                    @click="isVoice ? voiceClick?.(unit.VoiceFileName!) : ''"
                     class="absolute -bottom-1.5 -right-1 w-6 md:w-[32px] rounded-full bg-white text-gray-500 flex z-10"
                 >
                     <img src="/assets/voice_btn.png">

@@ -5,10 +5,12 @@ import { PhX, PhPlay, PhArrowSquareOut } from "@phosphor-icons/vue";
 import { useEpisodeData } from '../../composables/useEpisodeData'
 import type { IEpisodeModel } from '../../types/episode'
 import Dialogue from '../../components/Dialogue.vue'
+import { usePackVoicePlayer } from '../../composables/usePackVoicePlayer';
 
 const route = useRoute()
 const router = useRouter()
-const { episodeData, voiceData, error, fetchEpisodeData, fetchVoiceData} = useEpisodeData()
+const { episodeData, error, fetchEpisodeData} = useEpisodeData()
+const { fetchVoicePack, indexTable, playVoice} = usePackVoicePlayer()
 
 const episodeId = ref<number>(Number(route.params.id) || 0)
 const isVideoOpen = ref(false);
@@ -19,7 +21,7 @@ const init = (id: number) => {
     isVideoOpen.value = false
     episodeData.value = null 
     fetchEpisodeData(id)
-    fetchVoiceData(id)
+    fetchVoicePack(id)
 }
 
 onMounted(() => {
@@ -112,7 +114,8 @@ const toggleVideo = () => {
                 v-for="dialogue in (episodeData?.EpisodeDetail)?.filter((ep) => ep.Phrase !== '')"
                 :key="dialogue.Id"
                 :unit="(dialogue as any)"
-                :isVoice="voiceData?.includes(dialogue.VoiceFileName!) ?? false"
+                :isVoice="Object.keys(indexTable).includes(dialogue.VoiceFileName!) ?? false"
+                :voiceClick="playVoice"
             />
         </div>
 
