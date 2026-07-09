@@ -20,6 +20,7 @@ const { eid, title, date, episode, hiddenImg } = defineProps<{
             <img 
                 :src="geteventLogoUrl(eid)" 
                 :alt="title"
+                loading="lazy"
                 class="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700"
                 onerror="this.classList.add('hidden')"
             >

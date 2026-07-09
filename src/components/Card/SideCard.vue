@@ -15,6 +15,7 @@ const { sid, title, episode } = defineProps<{
         <div class="w-20 h-20 my-auto rounded-lg flex-none overflow-hidden transition-colors bg-gray-50">
                 <img 
                     :src="getCardIconUrl(sid)"
+                    loading="lazy"
                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 >
         </div>

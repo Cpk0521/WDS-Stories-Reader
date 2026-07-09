@@ -18,6 +18,7 @@ const props = defineProps<{
             <img 
                 :src="getposterIconUrl(props.pid)" 
                 :alt="props.title"
+                loading="lazy"
                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             >
         </div>
