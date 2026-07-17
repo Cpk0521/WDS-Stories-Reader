@@ -18,6 +18,7 @@ export const CompanyMaster : {[key : number] : string} = {
     2 : "Eden",
     3 : "銀河座",
     4 : "劇団電姫",
+    5 : "最終章",
     999 : '序章',
     900 : 'ラブライブサンシャイン'
 }
