@@ -10,11 +10,11 @@ const route = useRoute()
 const router = useRouter()
 const { episodeData, error, fetchPosterData } = usePosterData()
 
-const activeId = ref('0');
+const activeId = ref<number>(0);
 const episodeId = ref<number>(Number(route.params.id) || 0)
 const displayContent = computed<IPosterUnit[]>(()=>{
     if(!episodeData.value) return []
-    return episodeData.value.EpisodeDetail.filter((unit)=>unit.EpisodeType.toString() === activeId.value)
+    return episodeData.value.EpisodeDetail.filter((unit)=>unit.EpisodeType.toString() === activeId.value.toString())
 })
 const buttonlist = computed<string[]>(() => {
     if (!episodeData.value?.EpisodeDetail) return []
@@ -50,10 +50,11 @@ watch(() => error.value, (hasError) => {
                 <button 
                     v-for="(name, id) in PosterType" 
                     :key="id"
+                    v-show="buttonlist.includes(id.toString())"
                     :disabled="!buttonlist.includes(id.toString())"
-                    @click="activeId = id.toString()"
+                    @click="activeId = Number(id)"
                     class="px-5 py-2 rounded-full text-sm font-bold transition-all border shadow-sm disabled:opacity-30"
-                    :class="activeId === id.toString()
+                    :class="activeId.toString() === id
                         ? 'bg-pink-100 border-pink-200 text-[#ff5e8f]' 
                         : 'bg-white border-transparent text-gray-500 hover:bg-gray-100'"
                 >
@@ -72,7 +73,7 @@ watch(() => error.value, (hasError) => {
             </div>
         </div>
 
-        <div v-if="activeId === '5'" class="w-full md:p-4 space-y-2 md:space-y-4">
+        <div v-if="activeId >= 5" class="w-full md:p-4 space-y-2 md:space-y-4">
             <Dialogue 
                 v-for="dialogue in displayContent"
                 :key="dialogue.Id"
