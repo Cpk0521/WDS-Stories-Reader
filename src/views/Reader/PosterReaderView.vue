@@ -54,7 +54,7 @@ watch(() => error.value, (hasError) => {
                     :disabled="!buttonlist.includes(id.toString())"
                     @click="activeId = Number(id)"
                     class="px-5 py-2 rounded-full text-sm font-bold transition-all border shadow-sm disabled:opacity-30"
-                    :class="activeId.toString() === id
+                    :class="activeId === Number(id)
                         ? 'bg-pink-100 border-pink-200 text-[#ff5e8f]' 
                         : 'bg-white border-transparent text-gray-500 hover:bg-gray-100'"
                 >
