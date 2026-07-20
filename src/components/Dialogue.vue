@@ -16,7 +16,7 @@ const {unit, isVoice} = defineProps<{
             
             <div class="w-14 md:w-[78px] p-1 rounded-full relative select-none">
                 <div class="w-full rounded-full">
-                    <img :src="`./assets/characterlog/${(unit.SpeakerIconId ?? unit.CharacterId) ?? '1'}.png`">
+                    <img :src="`./assets/characterlog/${(unit.SpeakerIconId ?? (unit.CharacterId && unit.CharacterId < 101 ? '1' : unit.CharacterId)) ?? '1'}.png`">
                 </div>
                 
                 <button 
@@ -30,18 +30,18 @@ const {unit, isVoice} = defineProps<{
         </div>
 
         <div class="flex-grow grid grid-rows-[25px] md:grid-rows-[30px] min-w-0">
-            <span class="text-base md:text-lg row-span-1 text-gray-900 mb-1 ml-1 text-left">{{ (unit.SpeakerName ?? getNameById(unit.CharacterId)) ?? ''}}</span>
+            <span class="text-base md:text-lg row-span-1 text-gray-900 mb-1 ml-1 text-left">{{unit.SpeakerName && unit.SpeakerName!="" ? unit.SpeakerName : getNameById(unit.CharacterId) ?? ''}}</span>
 
             <div class="relative w-full">
                 <div class="absolute -left-2 top-3 w-2 h-4 pointer-events-none"
-                    :class="(unit.SpeakerIconId ?? unit.CharacterId) === '1' ? 'text-[#4f5564]' : 'text-[#eb5c62]'">
+                    :class="unit.SpeakerIconId === '1' ? 'text-[#4f5564]' : 'text-[#eb5c62]'">
                     <svg class="w-full h-full" viewBox="0 0 10 16" fill="currentColor">
                         <path d="M10,2 C8,4 2,7 0,8 C2,9 8,12 10,14 Z" />
                     </svg>
                 </div>
                 <div class="px-3 py-1.5 md:px-5 rounded-[15px] text-sm md:text-lg text-white text-left leading-relaxed tracking-tight whitespace-pre-line"
-                    :class="(unit.SpeakerIconId ?? unit.CharacterId) === '1' ? 'bg-[#565867]' : 'bg-[#ee5f5f]'" >
-                    {{ (unit.Phrase ?? unit.Description).replace(/(?:\/n)+/g, '\n') || ''}}
+                    :class="unit.SpeakerIconId === '1' ? 'bg-[#565867]' : 'bg-[#ee5f5f]'" >
+                      {{ unit.Phrase?.replace(/(?:\/n)+/g, '\n') ?? unit.Description?.replace(/\/n/g, '\n') ?? '' }}
                 </div>
             </div>
             

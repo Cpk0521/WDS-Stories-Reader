@@ -10,7 +10,8 @@ export interface IPosterUnit {
     EpisodeType: number,
     CharacterId: number,
     Description: string,
-    Order: number
+    Order: number,
+    SpeakerName : string
 }
 
 // Episode
