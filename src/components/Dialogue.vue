@@ -16,7 +16,10 @@ const {unit, isVoice} = defineProps<{
             
             <div class="w-14 md:w-[78px] p-1 rounded-full relative select-none">
                 <div class="w-full rounded-full">
-                    <img :src="`./assets/characterlog/${(unit.SpeakerIconId ?? (unit.CharacterId && unit.CharacterId < 101 ? '1' : unit.CharacterId)) ?? '1'}.png`">
+                    <img 
+                        v-show="unit.SpeakerIconId || unit.CharacterId"
+                        :src="`./assets/characterlog/${(unit.SpeakerIconId ?? (unit.CharacterId && unit.CharacterId < 101 ? '1' : unit.CharacterId)) ?? '1'}.png`"
+                    >
                 </div>
                 
                 <button 
