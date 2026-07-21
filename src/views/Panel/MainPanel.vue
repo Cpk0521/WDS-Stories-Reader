@@ -56,7 +56,7 @@ onMounted(()=>{
                 <div class="flex items-center gap-4">
                     <div class="aspect-[127/33] w-40 md:w-80 rounded-2xl border border-gray-200/80 bg-slate-50 flex items-center justify-center text-xs font-black text-gray-400 overflow-hidden flex-none">
                         <img 
-                            :src="`./assets/logo/logo_${gp.CompanyId != 999 && gp.CompanyId < 5 ? gp.CompanyId : '999'}.png`"
+                            :src="`./assets/logo/logo_${gp.CompanyId != 999 ? gp.CompanyId : '999'}.png`"
                             class="w-auto h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         />
                     </div>
@@ -84,7 +84,7 @@ onMounted(()=>{
                     v-for="event in gp.Groups" 
                     :key="event.Id" 
                     :eid="event.Id" 
-                    :title="`第 ${event.ChapterOrder} 章`"
+                    :title="event.CompanyId != 999  && event.CompanyId != 5 ? `第 ${event.ChapterOrder} 章` : CompanyMaster[event.CompanyId]"
                     :episode="event.Episode"
                     :hiddenImg="true"
                 />
@@ -92,5 +92,4 @@ onMounted(()=>{
         </transition>
     </div>
 </template>
-
 
